@@ -7,15 +7,16 @@ class FormSignup extends Component {
   static contextType = UserContext;
 
   state = {
-    email: "",
-    password: "",
+    email: '',
+    password: '',
+    role:'student'
   };
 
   handleChange = (event) => {
     const value =
-      event.target.type === "file"
+      event.target.type === 'file'
         ? event.target.files[0]
-        : event.target.type === "checkbox"
+        : event.target.type === 'checkbox'
         ? event.target.checked
         : event.target.value;
 
@@ -31,7 +32,7 @@ class FormSignup extends Component {
       .signup(this.state)
       .then((data) => {
         this.context.setUser(data);
-        this.props.history.push("/");
+        this.props.history.push('/');
       })
       .catch((error) => {
         console.log(error);
@@ -41,10 +42,30 @@ class FormSignup extends Component {
   render() {
     return (
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" />
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password" />
+        <label htmlFor='email'>Email</label>
+        <input 
+        type='email' 
+        id='email' 
+        name='email'
+        onChange={this.handleChange}
+         />
+        <label htmlFor='password'>Password</label>
+        <input 
+        type='password' 
+        id='password' 
+        name='password'
+        onChange={this.handleChange}
+         />
+        <label htmlFor='pet-select'>I am a ...</label>
+        <select 
+        name='role' 
+        value={this.state.role}
+        onChange={this.handleChange}
+        >
+          <option value=''>--Please choose an option--</option>
+          <option value='student'>Student</option>
+          <option value='teacher'>Teacher</option>
+        </select>
         <button>Submit</button>
       </form>
     );
