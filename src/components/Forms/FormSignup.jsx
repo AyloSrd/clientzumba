@@ -1,16 +1,18 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { UserContext } from "../Auth/UserContext";
-import apiHandler from "../../api/apiHandler";
+import React, { Component, createRef } from "react"
+import { withRouter } from "react-router-dom"
+import { UserContext } from "../Auth/UserContext"
+import apiHandler from "../../api/apiHandler"
 
 class FormSignup extends Component {
-  static contextType = UserContext;
+  static contextType = UserContext
 
   state = {
     email: '',
     password: '',
     role:'student'
-  };
+  }
+
+  alertText = createRef()
 
   handleChange = (event) => {
     const value =
@@ -22,54 +24,72 @@ class FormSignup extends Component {
 
     const key = event.target.name;
 
-    this.setState({ [key]: value });
-  };
+    this.setState({ [key]: value })
+  }
 
   handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     apiHandler
       .signup(this.state)
       .then((data) => {
-        this.context.setUser(data);
-        this.props.history.push('/');
+        this.context.setUser(data)
+        console.log(data)
+        this.props.history.push('/')
       })
       .catch((error) => {
-        console.log(error);
-      });
-  };
+        console.log(error)
+        this.alertText.current.style.display = 'block'
+      })
+  }
 
   render() {
     return (
-      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-        <label htmlFor='email'>Email</label>
-        <input 
-        type='email' 
-        id='email' 
-        name='email'
-        onChange={this.handleChange}
-         />
-        <label htmlFor='password'>Password</label>
-        <input 
-        type='password' 
-        id='password' 
-        name='password'
-        onChange={this.handleChange}
-         />
-        <label htmlFor='pet-select'>I am a ...</label>
-        <select 
-        name='role' 
-        value={this.state.role}
-        onChange={this.handleChange}
+      <div>
+        <div 
+          ref={this.alertText} 
+          style={{display:"none"}}
         >
-          <option value=''>--Please choose an option--</option>
-          <option value='student'>Student</option>
-          <option value='teacher'>Teacher</option>
-        </select>
-        <button>Submit</button>
-      </form>
-    );
+          <p>
+            This email is already taken !
+            <br />
+            Please try again
+          </p>
+        </div>
+
+        <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+          
+          <label htmlFor='email'>Email</label>
+          <input 
+          type='email' 
+          id='email' 
+          name='email'
+          onChange={this.handleChange}
+          />
+          
+          <label htmlFor='password'>Password</label>
+          <input 
+          type='password' 
+          id='password' 
+          name='password'
+          onChange={this.handleChange}
+          />
+          
+          <label htmlFor='pet-select'>I am a ...</label>
+          <select 
+          name='role' 
+          value={this.state.role}
+          onChange={this.handleChange}
+          >
+            <option value=''>--Please choose an option--</option>
+            <option value='student'>Student</option>
+            <option value='teacher'>Teacher</option>
+          </select>
+          <button>Submit</button>
+        </form>
+      </div>
+    )
   }
 }
 
-export default withRouter(FormSignup);
+export default withRouter(FormSignup)

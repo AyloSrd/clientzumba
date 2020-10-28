@@ -20,34 +20,34 @@ export default {
     return service
       .post("/api/auth/signup", userInfo)
       .then((res) => res.data)
-      .catch(errorHandler);
+      .catch(errorHandler)
   },
 
   signin(userInfo) {
     return service
       .post("/api/auth/signin", userInfo)
       .then((res) => res.data)
-      .catch(errorHandler);
+      .catch(errorHandler)
   },
 
   isLoggedIn() {
     return service
       .get("/api/auth/isLoggedIn")
       .then((res) => res.data)
-      .catch(errorHandler);
+      .catch(errorHandler)
   },
 
   logout() {
     return service
       .get("/api/auth/logout")
       .then((res) => res.data)
-      .catch(errorHandler);
+      .catch(errorHandler)
   },
 
   getItems() {
     return service
       .get("/api/items")
       .then((res) => res.data)
-      .catch(errorHandler);
-  },
-};
+      .catch(errorHandler)
+  }
+}
