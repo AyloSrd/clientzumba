@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 
 const service = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
@@ -7,10 +7,10 @@ const service = axios.create({
 
 function errorHandler(error) {
   if (error.response.data) {
-    console.log(error.response && error.response.data);
-    throw error;
+    console.log(error.response && error.response.data)
+    throw error
   }
-  throw error;
+  throw error
 }
 
 export default {

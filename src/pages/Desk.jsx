@@ -1,23 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Editor from '../components/Editor/Editor'
 import Minibrowser from '../components/Minibrowser/Minibrowser'
+import { libraries } from '../data/libraries'
+import { initiateSocket } from '../socket/socket'
 
 const Desk = () => {
 	
 	const [ html, setHtml ] = useState('<h1 id="test">test</h1>')
 	const [ css, setCss ] = useState('body { background-color : whitesmoke; height: 500px; width: 500px; color : #333; }')
 	const [ js, setJs ] = useState('document.getElementById("test").innerHTML += " test"')
+	const [ library, setLibrary ] = useState('react')
 
 	const [ srcDoc, setSrcDoc ] = useState('')
 
 	const [ lessonName, setLessonName ] = useState('test')
 
+	const [ room, setRoom ] = useState('room')
+
+	const [ peerId, setPeerId ] = useState('peer')
+
+	useEffect(() => {
+		initiateSocket(room, peerId)
+	}, [])
+
 	const handleRunMinibrowser = () => {
-		const library = `
-			<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-			<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/react/jsxLoader.min.js"></script>
-		`
+		const libraryTag = libraries[library]
+		console.log(libraryTag);
+		
 		const compiledSrc = `
 			<!DOCTYPE html>
 			<html>
@@ -26,7 +35,7 @@ const Desk = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<meta http-equiv="X-UA-Compatible" content="ie=edge">
 				<title>HTML Document</title>
-				${ library }
+				${ libraryTag }
 				<style>
 				${ css }
 				</style>
