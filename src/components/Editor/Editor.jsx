@@ -17,7 +17,7 @@ const Editor = props => {
 	} = props
 
 	const handleChange = (editor, data, value) => {
-		onChange(value)
+		onChange(value, language)
 	}
 
 	return (

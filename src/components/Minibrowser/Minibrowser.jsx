@@ -1,12 +1,22 @@
 import React from 'react'
 
 const Minibrowser = props => {
-	const { srcDoc, lessonName, handleRunMinibrowser } = props
-	console.log(srcDoc)
+	const { 
+		srcDoc, 
+		lessonName, 
+		handleRunMinibrowser, 
+		sendRunMinibrowser 
+	} = props
+	
+	const handleClick = () => {
+		handleRunMinibrowser()
+		sendRunMinibrowser()
+	}
+	
 	return (
 		<div>
 			<div className="lessonName">
-				<button onClick={ handleRunMinibrowser }>Run</button>
+				<button onClick={ handleClick }>Run</button>
 				<p>Lesson : { lessonName }</p>
 			</div>
 			<iframe 
