@@ -30,7 +30,7 @@ const Desk = props => {
 	const [ miniBrowserCounter, setMinibrowserCounter ] = useState(0)
 	const [ lessonName, setLessonName ] = useState('test')
 
-	const [ socketConnected, setSocketConnected] = useState(false)
+	const [ socketConnected, setSocketConnected ] = useState(false)
 
 	const [ room, setRoom ] = useState('room')
 
@@ -147,7 +147,7 @@ const Desk = props => {
 	return (
 		<div>
 			<div className="panel editors">
-				<div className="Tab">
+				<div className="tab">
 					<button 
 					name="htmlTab" 
 					className={`Tablinks ${ isHtmlTabOpen ? 'open' : '' }`} 
