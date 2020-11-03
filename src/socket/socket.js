@@ -8,6 +8,12 @@ export const initiateSocket = (room, socketId) => {
 	if (socket && room) socket.emit('join', room, socketId)
 }
 
+export const getIsConnected = setSocketConnected => {
+	socket.on('connect', () => {
+		setSocketConnected(socket.connected)
+	})
+} 
+
 export const disconnectSocket = () => {
   console.log('Disconnecting socket...')
   if(socket) socket.disconnect()

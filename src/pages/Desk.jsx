@@ -4,6 +4,7 @@ import Minibrowser from '../components/Minibrowser/Minibrowser'
 import { libraries } from '../data/libraries'
 import { 
 	initiateSocket, 
+	getIsConnected,
 	disconnectSocket, 
 	sendCode, 
 	getCode, 
@@ -25,16 +26,15 @@ const Desk = props => {
 	const [ isJsTabOpen, setIsJsTabOpen ] = useState(false)
 
 	const [ library, setLibrary ] = useState('react')
-
 	const [ srcDoc, setSrcDoc ] = useState('')
-
+	const [ miniBrowserCounter, setMinibrowserCounter ] = useState(0)
 	const [ lessonName, setLessonName ] = useState('test')
+
+	const [ socketConnected, setSocketConnected] = useState(false)
 
 	const [ room, setRoom ] = useState('room')
 
 	const [ peerId, setPeerId ] = useState('peer')
-
-	const [ miniBrowserCounter, setMinibrowserCounter ] = useState(0)
 
 	const handleChange = (value, lang) => {
 		switch(lang) {
@@ -131,6 +131,7 @@ const Desk = props => {
 			setCss(code.css)
 			setJs(code.js)
 		})
+		getIsConnected(setSocketConnected)
 		getRunMinibrowser(setMinibrowserCounter, miniBrowserCounter)
 		getActiveTab(setIsHtmlTabOpen, setIsCssTabOpen, setIsJsTabOpen)
 
@@ -150,7 +151,7 @@ const Desk = props => {
 					<button 
 					name="htmlTab" 
 					className={`Tablinks ${ isHtmlTabOpen ? 'open' : '' }`} 
-					onClick={openTab}>index.htmlL</button>
+					onClick={openTab}>index.html</button>
 					<button 
 					name="cssTab" 
 					className={`Tablinks ${ isCssTabOpen ? 'open' : '' }`} 
