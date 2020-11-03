@@ -104,24 +104,26 @@ const Desk = props => {
 		switch (e.target.name) {
 		  case 'htmlTab':
 			setIsHtmlTabOpen(true)
+			changeTab( room, true, false, false )	
 			break
 		  case 'cssTab':
 			setIsCssTabOpen(true)
+			changeTab( room, false, true, false )	
 			break;
 		  case 'jsTab':
 			setIsJsTabOpen(true)
+			changeTab( room, false, false, true )	
 			break;
 		  default:
 			setIsHtmlTabOpen(true)
 		}
-		
 	}
 
 	const handleSendRunMinibrowser = () => {
 		sendRunMinibrowser( room, peerId )
 	} 
 
-	
+	//when component mounts initialize socket and start listening to code changing, browser run, and tab change 
 	useEffect(() => {
 		initiateSocket(room, peerId)
 		getCode(code => {
@@ -135,14 +137,8 @@ const Desk = props => {
 		return disconnectSocket
 	}, [])
 
-
 	//run minibrowser when triggered
 	useEffect(handleRunMinibrowser, [ miniBrowserCounter ])
-
-	useEffect(() => {
-		console.log('changing tab')
-		changeTab( room, isHtmlTabOpen, isCssTabOpen, isJsTabOpen )
-	  }, [ isHtmlTabOpen, isCssTabOpen, isJsTabOpen ])
 
 	// console.log(props)
 	  console.log('html tab', isHtmlTabOpen, 'css tab', isCssTabOpen, 'sj tab', isJsTabOpen)
@@ -150,6 +146,27 @@ const Desk = props => {
 	return (
 		<div>
 			<div className="panel editors">
+				<div className="Tab">
+					<button 
+					name="htmlTab" 
+					className={`Tablinks ${ isHtmlTabOpen ? 'open' : '' }`} 
+					onClick={openTab}>index.htmlL</button>
+					<button 
+					name="cssTab" 
+					className={`Tablinks ${ isCssTabOpen ? 'open' : '' }`} 
+					onClick={openTab}>styles.css</button>
+					<button 
+					name="jsTab" 
+					className={`Tablinks ${ isJsTabOpen ? 'open' : '' }`} 
+					onClick={openTab}>app.js</button>
+					{/* <button 
+					id="saveBtn" 
+					onClick= {handleSave}
+					className="Tablinks Right"
+					>
+					<img width="20px" src={saveIcon} alt="floppy disk icon"/>
+					</button> */}
+				</div>
 				<Editor 
 					language="xml"
 					value={ html }
