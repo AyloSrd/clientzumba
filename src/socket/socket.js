@@ -2,10 +2,10 @@ import io from 'socket.io-client'
 
 let socket
 
-export const initiateSocket = (room, socketId) => {
+export const initiateSocket = (room, userName) => {
 	socket = io(process.env.REACT_APP_BACKEND_URL)
 	console.log('connecting socket')
-	if (socket && room) socket.emit('join', room, socketId)
+	if (socket && room) socket.emit('join', room, userName)
 }
 
 export const getIsConnected = setSocketConnected => {
@@ -19,29 +19,29 @@ export const disconnectSocket = () => {
   if(socket) socket.disconnect()
 }
 
-export const sendCode = (room, code, socketId) => {
-	if (socket) socket.emit('coding', code, room, socketId)
+export const sendCode = (room, code, userName) => {
+	if (socket) socket.emit('coding', code, room, userName)
 }
 
 export const getCode = updateCode => {
 	if (!socket) return(true)
-  	socket.on('sendingCode', ( code, socketId ) => {
-		console.log(`Websocket event received (${code})! from ${socketId}`)
+  	socket.on('sendingCode', ( code, userName ) => {
+		console.log(`Websocket event received (${code})! from ${userName}`)
 		updateCode(code)
 	})
 }
 
 export const getRunMinibrowser = ( setMinibrowserCounter, miniBrowserCounter ) => {
 	if(socket){
-		socket.on('runMinibrowser', socketId => {
-			console.log(`${socketId} just run de the minibrowser`)
+		socket.on('runMinibrowser', userName => {
+			console.log(`${userName} just run de the minibrowser`)
 			setMinibrowserCounter(miniBrowserCounter + 1)
 		})
 	}
 } 
 
-export const sendRunMinibrowser = ( room, socketId) => {
-	if (socket) socket.emit('runMinibrowser', room, socketId)
+export const sendRunMinibrowser = ( room, userName) => {
+	if (socket) socket.emit('runMinibrowser', room, userName)
 }
 
 export const changeTab = (room, html, css, js) => {
@@ -54,6 +54,22 @@ export const getActiveTab = (isHtmlTabOpen, isCssTabOpen, isJsTabOpen) => {
 			isHtmlTabOpen(html)
 			isCssTabOpen(css)
 			isJsTabOpen(js)
+		})
+	}
+}
+
+export const sendCallMeRequest = (peerId, room) => {
+	if (socket) socket.emit('callMe', peerId, room)
+}
+
+export const callPeer = ( stream, myPeer, calls, setCalls ) => {
+	if (socket) {
+		socket.on('callMe', peerId => {
+			const call = myPeer.call(peerId, stream)
+			console.log('calling', peerId, call)
+			const updatedCallsArray = [ ...calls, call ]
+			console.log('call peer', updatedCallsArray)
+			setCalls(updatedCallsArray)
 		})
 	}
 }

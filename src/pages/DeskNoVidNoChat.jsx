@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Editor from '../components/Editor/Editor'
 import Minibrowser from '../components/Minibrowser/Minibrowser'
-import { getCamera, streamCall } from '../components/Video/VideoLogic'
 import { libraries } from '../data/libraries'
 import { 
 	initiateSocket, 
@@ -12,36 +11,10 @@ import {
 	getRunMinibrowser, 
 	sendRunMinibrowser, 
 	changeTab, 
-	getActiveTab,
-	sendCallMeRequest,
-	callPeer 
+	getActiveTab 
 } from '../socket/socket'
 import Peer from 'peerjs'
 import { withUser } from '../components/Auth/withUser'
-
-const Video = ({ peerId, call, stream }) => {
-	const classmateVideo = useRef()
-
-	useEffect(() => {
-		console.log('video is here')
-		if (call.provider.id !== peerId){
-			console.log('I answer')
-			call.answer(stream)
-			console.log('answer', stream)
-			streamCall( call, classmateVideo)
-		}
-		if (call.provider.id === peerId){
-			console.log('I wait for an answer')
-			streamCall( call, classmateVideo)
-		}
-	}, [])
-
-	return(
-		<div className="Video SmallV">
-          <video playsInline muted ref={classmateVideo} autoPlay/>
-        </div>
-	)
-}
 
 const Desk = props => {
 	
@@ -58,19 +31,12 @@ const Desk = props => {
 	const [ miniBrowserCounter, setMinibrowserCounter ] = useState(0)
 	const [ lessonName, setLessonName ] = useState('test')
 
-	// video
-	const userVideo = useRef()
-	// const classmateVideo = useRef()
-	const [ stream, setStream ] = useState()
-	
-	//peer
-	const [ myPeer, setMyPeer] = useState('')
-	const [ peerId, setPeerId ] = useState(null)
-	const [ calls, setCalls ] = useState([])
-
 	const [ socketConnected, setSocketConnected ] = useState(false)
+	const [ peer, setPeer ] = useState(null)
 
 	const [ room, setRoom ] = useState('room')
+
+	const [ peerId, setPeerId ] = useState('peer')
 	
 	const userName = props.context.user.email.split('@')[0]
 
@@ -129,11 +95,12 @@ const Desk = props => {
 			</script>
 			</html>
 		`
+		console.log(compiledSrc)
 		setSrcDoc(compiledSrc)
 	}
 
 	const openTab = e => {
-		
+		console.log('changing tab on click')
 		setIsHtmlTabOpen(false)
 		setIsCssTabOpen(false)
 		setIsJsTabOpen(false)
@@ -172,43 +139,13 @@ const Desk = props => {
 		getRunMinibrowser(setMinibrowserCounter, miniBrowserCounter)
 		getActiveTab(setIsHtmlTabOpen, setIsCssTabOpen, setIsJsTabOpen)
 
-		getCamera(userVideo, setStream)
-		
-		const myPeer = new Peer(undefined, {
-			secure: true, 
-			host: 'peerjs-server-codeschool.herokuapp.com', 
-			port: 443
-    	})
-		setMyPeer(myPeer)
-		myPeer.on('open', id => {
-			console.log('peer id', id)
-			setPeerId(id)	
-		})
-		myPeer.on('error', id => {
-			console.log('error', id)	
-		})
-
 		return disconnectSocket
 	}, [])
 
 	//run minibrowser when triggered
 	useEffect(handleRunMinibrowser, [ miniBrowserCounter ])
 
-	//start peer connection
-	useEffect(() => {
-		if (peerId && stream) {
-			callPeer(stream, myPeer, calls, setCalls)
-			console.log('sending call request')
-			sendCallMeRequest(peerId, room) 
-			myPeer.on('call', call => {
-				const updatedCallsArray = [ ...calls, call ]
-				console.log('peer on call', updatedCallsArray)
-				setCalls(updatedCallsArray)
-			})
-		}
-	}, [ peerId, stream ])
-
-	console.log('calls', calls) 
+	console.log(userName)
 
 	return (
 		<div>
@@ -261,12 +198,7 @@ const Desk = props => {
 					sendRunMinibrowser={ handleSendRunMinibrowser }
 				/>
 			</div>
-			<div className="Video">
-				<video playsInline muted ref={userVideo} autoPlay/>
-			</div>
-			{
-				calls.map((call, index) => <Video key={index} call={call} stream={stream} peerId={peerId}/>)
-			}
+
 		</div>
 	)
 }
