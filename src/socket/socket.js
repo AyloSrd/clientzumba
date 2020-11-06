@@ -67,9 +67,7 @@ export const callPeer = ( stream, myPeer, calls, setCalls ) => {
 		socket.on('callMe', peerId => {
 			const call = myPeer.call(peerId, stream)
 			console.log('calling', peerId, call)
-			const updatedCallsArray = [ ...calls, call ]
-			console.log('call peer', updatedCallsArray)
-			setCalls(updatedCallsArray)
+			setCalls(prevCalls => [ ...prevCalls, call ])
 		})
 	}
 }

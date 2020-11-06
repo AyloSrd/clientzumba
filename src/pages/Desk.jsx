@@ -23,22 +23,25 @@ const Video = ({ peerId, call, stream }) => {
 	const classmateVideo = useRef()
 
 	useEffect(() => {
-		console.log('video is here')
-		if (call.provider.id !== peerId){
-			console.log('I answer')
-			call.answer(stream)
-			console.log('answer', stream)
-			streamCall( call, classmateVideo)
-		}
-		if (call.provider.id === peerId){
-			console.log('I wait for an answer')
-			streamCall( call, classmateVideo)
-		}
+		// console.log('video is here')
+		// if (call.provider.id !== peerId){
+		// 	console.log('I answer')
+		// 	call.answer(stream)
+		// 	console.log('answer', stream)
+		// 	streamCall( call, classmateVideo)
+		// }
+		// if (call.provider.id === peerId){
+		// 	console.log('I wait for an answer')
+		// 	streamCall( call, classmateVideo)
+		// }
+		if(call.answer) call.answer(stream)
+		streamCall( call, classmateVideo )
 	}, [])
 
 	return(
 		<div className="Video SmallV">
           <video playsInline muted ref={classmateVideo} autoPlay/>
+			<p>{call.peer}</p>
         </div>
 	)
 }
@@ -200,11 +203,7 @@ const Desk = props => {
 			callPeer(stream, myPeer, calls, setCalls)
 			console.log('sending call request')
 			sendCallMeRequest(peerId, room) 
-			myPeer.on('call', call => {
-				const updatedCallsArray = [ ...calls, call ]
-				console.log('peer on call', updatedCallsArray)
-				setCalls(updatedCallsArray)
-			})
+			myPeer.on('call', call => setCalls(prevCalls => [ ...prevCalls, call ]))
 		}
 	}, [ peerId, stream ])
 
@@ -263,6 +262,7 @@ const Desk = props => {
 			</div>
 			<div className="Video">
 				<video playsInline muted ref={userVideo} autoPlay/>
+				<h2>{peerId}</h2>
 			</div>
 			{
 				calls.map((call, index) => <Video key={index} call={call} stream={stream} peerId={peerId}/>)
