@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Editor from '../components/Editor/Editor'
+import Video from '../components/Video/Video'
 import Minibrowser from '../components/Minibrowser/Minibrowser'
 import { getCamera, streamCall } from '../components/Video/VideoLogic'
 import { libraries } from '../data/libraries'
@@ -19,39 +20,19 @@ import {
 import Peer from 'peerjs'
 import { withUser } from '../components/Auth/withUser'
 
-const Video = ({ peerId, call, stream }) => {
-	const classmateVideo = useRef()
-
-	useEffect(() => {
-		// console.log('video is here')
-		// if (call.provider.id !== peerId){
-		// 	console.log('I answer')
-		// 	call.answer(stream)
-		// 	console.log('answer', stream)
-		// 	streamCall( call, classmateVideo)
-		// }
-		// if (call.provider.id === peerId){
-		// 	console.log('I wait for an answer')
-		// 	streamCall( call, classmateVideo)
-		// }
-		if(call.answer) call.answer(stream)
-		streamCall( call, classmateVideo )
-	}, [])
-
-	return(
-		<div className="Video SmallV">
-          <video playsInline muted ref={classmateVideo} autoPlay/>
-			<p>{call.peer}</p>
-        </div>
-	)
-}
-
 const Desk = props => {
+	console.log(props)
+	const { email, role, _id : userId} = props.context.user
 	
 	const [ html, setHtml ] = useState('<h1 id="test">test</h1>')
 	const [ css, setCss ] = useState('body { background-color : whitesmoke; height: 500px; width: 500px; color : #333; }')
 	const [ js, setJs ] = useState('document.getElementById("test").innerHTML += " test"')
 
+	const [ incomingHtml, setIncomingHtml ] = useState('<h1 id="test">test</h1>')
+	const [ incomingCss, setIncomingCss ] = useState('body { background-color : whitesmoke; height: 500px; width: 500px; color : #333; }')
+	const [ incomingJs, setIncomingJs ] = useState('document.getElementById("test").innerHTML += " test"')
+
+	const [isPaused, setIsPaused] = useState(false)
 	const [ isHtmlTabOpen, setIsHtmlTabOpen ] = useState(true)
 	const [ isCssTabOpen, setIsCssTabOpen ] = useState(false)
 	const [ isJsTabOpen, setIsJsTabOpen ] = useState(false)
@@ -75,13 +56,13 @@ const Desk = props => {
 
 	const [ room, setRoom ] = useState('room')
 	
-	const userName = props.context.user.email.split('@')[0]
+	const userName = email.split('@')[0]
 
 	const handleChange = (value, lang) => {
 		switch(lang) {
 			case 'xml':
 			  setHtml(value)
-			  sendCode(room, {
+			  role === 'teacher' && sendCode(room, {
 				html:value,
 				css, 
 				js
@@ -89,7 +70,7 @@ const Desk = props => {
 			  break
 			case 'css':
 			  setCss(value)
-			  sendCode(room, {
+			  role === 'teacher' && sendCode(room, {
 				html,
 				css:value, 
 				js
@@ -97,7 +78,7 @@ const Desk = props => {
 			  break
 			case 'javascript':
 				setJs(value)
-				sendCode(room, {
+				role === 'teacher' && sendCode(room, {
 					html,
 					css, 
 					js:value
@@ -165,11 +146,11 @@ const Desk = props => {
 
 	//when component mounts initialize socket and start listening to code changing, browser run, and tab change 
 	useEffect(() => {
-		initiateSocket(room, userName)
+		initiateSocket(room, userId)
 		getCode(code => {
-			setHtml(code.html)
-			setCss(code.css)
-			setJs(code.js)
+			setIncomingHtml(code.html)
+			setIncomingCss(code.css)
+			setIncomingJs(code.js)
 		})
 		getIsConnected(setSocketConnected)
 		getRunMinibrowser(setMinibrowserCounter, miniBrowserCounter)
@@ -193,6 +174,23 @@ const Desk = props => {
 
 		return disconnectSocket
 	}, [])
+	
+	useEffect(() => {
+		if (!isPaused) {
+		  setHtml(incomingHtml)
+		  setCss(incomingCss)
+		  setJs(incomingJs)
+		  console.log( 'in useEffect', incomingHtml, incomingCss, incomingJs )
+		}
+	  }, [ incomingHtml, incomingCss, incomingJs ])
+	
+	  useEffect(() => {
+		if (!isPaused) {
+		  setHtml(incomingHtml)
+		  setCss(incomingCss)
+		  setJs(incomingJs)
+		}
+	  }, [ isPaused ])
 
 	//run minibrowser when triggered
 	useEffect(handleRunMinibrowser, [ miniBrowserCounter ])
@@ -218,20 +216,33 @@ const Desk = props => {
 					className={`Tablinks ${ isHtmlTabOpen ? 'open' : '' }`} 
 					onClick={openTab}>index.html</button>
 					<button 
-					name="cssTab" 
-					className={`Tablinks ${ isCssTabOpen ? 'open' : '' }`} 
-					onClick={openTab}>styles.css</button>
+						name="cssTab" 
+						className={`Tablinks ${ isCssTabOpen ? 'open' : '' }`} 
+						onClick={openTab}>styles.css</button>
 					<button 
-					name="jsTab" 
-					className={`Tablinks ${ isJsTabOpen ? 'open' : '' }`} 
-					onClick={openTab}>app.js</button>
-					{/* <button 
-					id="saveBtn" 
-					onClick= {handleSave}
-					className="Tablinks Right"
-					>
-					<img width="20px" src={saveIcon} alt="floppy disk icon"/>
-					</button> */}
+						name="jsTab" 
+						className={`Tablinks ${ isJsTabOpen ? 'open' : '' }`} 
+						onClick={openTab}>app.js</button>
+					{
+						role ==='student' && (
+							<button 
+								onClick= {
+								() =>{
+									setIsPaused(prevPaused => !prevPaused)
+								}}
+								className="Tablinks Right"
+							>pause
+								<div 
+									className={
+									isPaused 
+									? 'Play' 
+									: 'Pause'
+									}>
+								</div>
+							</button>
+
+						)
+					}
 				</div>
 				<Editor 
 					language="xml"
@@ -265,7 +276,7 @@ const Desk = props => {
 				<h2>{peerId}</h2>
 			</div>
 			{
-				calls.map((call, index) => <Video key={index} call={call} stream={stream} peerId={peerId}/>)
+				calls.map((call, index) => <Video key={index} call={call} stream={stream} />)
 			}
 		</div>
 	)

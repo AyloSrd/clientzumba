@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef} from 'react'
-import { getCamera, answerCalls} from './VideoLogic'
+import React, { useEffect, useRef } from 'react'
+import { streamCall } from './VideoLogic'
 
-const Video = props => {
-	const userVideo = useRef()
+const Video = ({ call, stream }) => {
 	const classmateVideo = useRef()
-	const [ stream, setStream ] = useState()
-	const [ call, setCall ] = useState(null)
 
-	useEffect(()=> {
+	useEffect(() => {
+		if(call.answer) call.answer(stream)
+		streamCall( call, classmateVideo )
 	}, [])
 
-	return (
-		<div>
-			
-		</div>
+	return(
+		<div className="Video SmallV">
+          <video playsInline muted ref={classmateVideo} autoPlay/>
+			<p>{call.peer}</p>
+        </div>
 	)
 }
 
