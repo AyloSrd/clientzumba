@@ -14,9 +14,12 @@ export const getIsConnected = setSocketConnected => {
 	})
 } 
 
-export const disconnectSocket = () => {
+export const disconnectSocket = ( room, userId ) => {
   console.log('Disconnecting socket...')
-  if(socket) socket.disconnect()
+  if(socket){
+	socket.emit('willDisconnect', room, userId)
+	socket.disconnect()
+  } 
 }
 
 export const sendCode = (room, code, userName) => {
@@ -62,7 +65,7 @@ export const sendCallMeRequest = (peerId, room) => {
 	if (socket) socket.emit('callMe', peerId, room)
 }
 
-export const callPeer = ( stream, myPeer, calls, setCalls ) => {
+export const callPeer = ( stream, myPeer, setCalls ) => {
 	if (socket) {
 		socket.on('callMe', peerId => {
 			const call = myPeer.call(peerId, stream)

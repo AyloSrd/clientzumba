@@ -28,11 +28,11 @@ const Desk = props => {
 	const [ css, setCss ] = useState('body { background-color : whitesmoke; height: 500px; width: 500px; color : #333; }')
 	const [ js, setJs ] = useState('document.getElementById("test").innerHTML += " test"')
 
+	const [isPaused, setIsPaused] = useState(false)
 	const [ incomingHtml, setIncomingHtml ] = useState('<h1 id="test">test</h1>')
 	const [ incomingCss, setIncomingCss ] = useState('body { background-color : whitesmoke; height: 500px; width: 500px; color : #333; }')
 	const [ incomingJs, setIncomingJs ] = useState('document.getElementById("test").innerHTML += " test"')
 
-	const [isPaused, setIsPaused] = useState(false)
 	const [ isHtmlTabOpen, setIsHtmlTabOpen ] = useState(true)
 	const [ isCssTabOpen, setIsCssTabOpen ] = useState(false)
 	const [ isJsTabOpen, setIsJsTabOpen ] = useState(false)
@@ -50,6 +50,7 @@ const Desk = props => {
 	//peer
 	const [ myPeer, setMyPeer] = useState('')
 	const [ peerId, setPeerId ] = useState(null)
+	const [ peers, setPeers ] = useState([])
 	const [ calls, setCalls ] = useState([])
 
 	const [ socketConnected, setSocketConnected ] = useState(false)
