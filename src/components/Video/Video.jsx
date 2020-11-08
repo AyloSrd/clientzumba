@@ -5,9 +5,11 @@ const Video = ({ call, stream }) => {
 	const classmateVideo = useRef()
 
 	useEffect(() => {
-		if(call.answer) call.answer(stream)
-		streamCall( call, classmateVideo )
+		call.answer(stream)
+		streamCall( call, classmateVideo)
+		return () => call.close()
 	}, [])
+
 
 	return(
 		<div className="Video SmallV">

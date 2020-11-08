@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Editor from '../components/Editor/Editor'
 import Video from '../components/Video/Video'
 import Minibrowser from '../components/Minibrowser/Minibrowser'
-import { getCamera, streamCall } from '../components/Video/VideoLogic'
+import { getCamera } from '../components/Video/VideoLogic'
 import { libraries } from '../data/libraries'
 import { 
 	initiateSocket, 
@@ -15,7 +15,8 @@ import {
 	changeTab, 
 	getActiveTab,
 	sendCallMeRequest,
-	callPeer 
+	callPeer,
+	removeClosedCall 
 } from '../socket/socket'
 import Peer from 'peerjs'
 import { withUser } from '../components/Auth/withUser'
@@ -50,7 +51,6 @@ const Desk = props => {
 	//peer
 	const [ myPeer, setMyPeer] = useState('')
 	const [ peerId, setPeerId ] = useState(null)
-	const [ peers, setPeers ] = useState([])
 	const [ calls, setCalls ] = useState([])
 
 	const [ socketConnected, setSocketConnected ] = useState(false)
@@ -173,6 +173,8 @@ const Desk = props => {
 			console.log('error', id)	
 		})
 
+		removeClosedCall(setCalls)
+
 		return disconnectSocket
 	}, [])
 	
@@ -199,14 +201,14 @@ const Desk = props => {
 	//start peer connection
 	useEffect(() => {
 		if (peerId && stream) {
-			callPeer(stream, myPeer, calls, setCalls)
+			callPeer(stream, myPeer, setCalls)
 			console.log('sending call request')
 			sendCallMeRequest(peerId, room) 
 			myPeer.on('call', call => setCalls(prevCalls => [ ...prevCalls, call ]))
 		}
 	}, [ peerId, stream ])
 
-	console.log('calls', calls) 
+	console.log('peers') 
 
 	return (
 		<div>

@@ -14,12 +14,9 @@ export const getIsConnected = setSocketConnected => {
 	})
 } 
 
-export const disconnectSocket = ( room, userId ) => {
+export const disconnectSocket = () => {
   console.log('Disconnecting socket...')
-  if(socket){
-	socket.emit('willDisconnect', room, userId)
-	socket.disconnect()
-  } 
+  if(socket) socket.disconnect()
 }
 
 export const sendCode = (room, code, userName) => {
@@ -71,6 +68,14 @@ export const callPeer = ( stream, myPeer, setCalls ) => {
 			const call = myPeer.call(peerId, stream)
 			console.log('calling', peerId, call)
 			setCalls(prevCalls => [ ...prevCalls, call ])
+		})
+	}
+}
+
+export const removeClosedCall = setCalls => {
+	if (socket) {
+		socket.on('I quit', peerId => {
+			setCalls(prevCalls => prevCalls.filter(c => c.peer === peerId))
 		})
 	}
 }
