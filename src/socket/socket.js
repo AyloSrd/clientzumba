@@ -19,8 +19,8 @@ export const disconnectSocket = () => {
   if(socket) socket.disconnect()
 }
 
-export const sendCode = (room, code, userName) => {
-	if (socket) socket.emit('coding', code, room, userName)
+export const sendCode = (room, code, userId) => {
+	if (socket) socket.emit('coding', code, room, userId)
 }
 
 export const getCode = updateCode => {

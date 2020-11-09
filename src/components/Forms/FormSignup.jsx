@@ -7,6 +7,7 @@ class FormSignup extends Component {
   static contextType = UserContext
 
   state = {
+    userName: '',
     email: '',
     password: '',
     role:'student'
@@ -58,7 +59,14 @@ class FormSignup extends Component {
         </div>
 
         <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-          
+        <label htmlFor='userName'>User name</label>
+          <input 
+          type='text' 
+          id='userName' 
+          name='userName'
+          onChange={this.handleChange}
+          />
+
           <label htmlFor='email'>Email</label>
           <input 
           type='email' 

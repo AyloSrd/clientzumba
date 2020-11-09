@@ -23,7 +23,12 @@ import { withUser } from '../components/Auth/withUser'
 
 const Desk = props => {
 	console.log(props)
-	const { email, role, _id : userId} = props.context.user
+
+	const { 
+		userName, 
+		role, 
+		_id : userId
+	} = props.context.user
 	
 	const [ html, setHtml ] = useState('<h1 id="test">test</h1>')
 	const [ css, setCss ] = useState('body { background-color : whitesmoke; height: 500px; width: 500px; color : #333; }')
@@ -56,8 +61,6 @@ const Desk = props => {
 	const [ socketConnected, setSocketConnected ] = useState(false)
 
 	const [ room, setRoom ] = useState('room')
-	
-	const userName = email.split('@')[0]
 
 	const handleChange = (value, lang) => {
 		switch(lang) {
@@ -67,7 +70,7 @@ const Desk = props => {
 				html:value,
 				css, 
 				js
-			}, userName)
+			}, userId)
 			  break
 			case 'css':
 			  setCss(value)
@@ -75,7 +78,7 @@ const Desk = props => {
 				html,
 				css:value, 
 				js
-			}, userName)
+			}, userId)
 			  break
 			case 'javascript':
 				setJs(value)
@@ -83,7 +86,7 @@ const Desk = props => {
 					html,
 					css, 
 					js:value
-				}, userName)
+				}, userId)
 				break
 			default:
 			  return
