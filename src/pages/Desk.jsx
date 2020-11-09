@@ -20,6 +20,7 @@ import {
 } from '../socket/socket'
 import Peer from 'peerjs'
 import { withUser } from '../components/Auth/withUser'
+import apiHandler from '../api/apiHandler'
 
 const Desk = props => {
 	console.log(props)
@@ -60,7 +61,7 @@ const Desk = props => {
 
 	const [ socketConnected, setSocketConnected ] = useState(false)
 
-	const [ room, setRoom ] = useState('room')
+	const [ room, setRoom ] = useState('react-room')
 
 	const handleChange = (value, lang) => {
 		switch(lang) {
@@ -148,9 +149,25 @@ const Desk = props => {
 		sendRunMinibrowser( room, userName )
 	} 
 
+	const handleSave = () => {
+		const note = {
+			lesson: room,
+			student: userId,
+			html,
+			css,
+			js,
+			library
+		}
+
+		apiHandler
+			.createNote(note)
+			.then( data => console.log(data))
+			.catch(err => console.error(err))
+	}
+
 	//when component mounts initialize socket and start listening to code changing, browser run, and tab change 
 	useEffect(() => {
-		initiateSocket(room, userId)
+		initiateSocket(room, userId, role)
 		getCode(code => {
 			setIncomingHtml(code.html)
 			setIncomingCss(code.css)
@@ -231,22 +248,30 @@ const Desk = props => {
 						onClick={openTab}>app.js</button>
 					{
 						role ==='student' && (
-							<button 
-								onClick= {
-								() =>{
-									setIsPaused(prevPaused => !prevPaused)
-								}}
+							<>
+								<button 
+									onClick= {
+									() =>{
+										setIsPaused(prevPaused => !prevPaused)
+									}}
+									className="Tablinks Right"
+								>pause
+									<div 
+										className={
+										isPaused 
+										? 'Play' 
+										: 'Pause'
+										}>
+									</div>
+								</button>
+								<button 
+								id="saveBtn" 
+								onClick= {handleSave}
 								className="Tablinks Right"
-							>pause
-								<div 
-									className={
-									isPaused 
-									? 'Play' 
-									: 'Pause'
-									}>
-								</div>
+							>
+								save
 							</button>
-
+						</>
 						)
 					}
 				</div>

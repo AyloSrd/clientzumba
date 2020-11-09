@@ -2,10 +2,10 @@ import io from 'socket.io-client'
 
 let socket
 
-export const initiateSocket = (room, userId) => {
+export const initiateSocket = (room, userId, role) => {
 	socket = io(process.env.REACT_APP_BACKEND_URL)
 	console.log('connecting socket')
-	if (socket && room) socket.emit('join', room, userId)
+	if (socket && room) socket.emit('join', room, userId, role)
 }
 
 export const getIsConnected = setSocketConnected => {

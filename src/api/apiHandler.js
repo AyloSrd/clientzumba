@@ -49,5 +49,70 @@ export default {
       .get("/api/items")
       .then((res) => res.data)
       .catch(errorHandler)
+  },
+
+  getStudentNotes(studentId) {
+    return service
+      .get(`/api/notes/all/${studentId}`)
+      .then((res) => res.data)
+      .catch(errorHandler)
+  },
+
+  getNote(id) {
+    return service
+      .get(`/api/notes/${id}`)
+      .then((res) => res.data)
+      .catch(errorHandler)
+  },
+
+  createNote(note) {
+    return service 
+      .post('/api/notes', note)
+      .then((res) => res.data)
+      .catch(errorHandler)
+  },
+
+  deleteNote(id) {
+    return service 
+      .delete(`/api/notes/${id}`)
+      .then((res) => res.data)
+      .catch(errorHandler)
+  },
+
+  
+  getStudentLessons(studentId) {
+    return service
+      .get(`/api/lessons/student/${studentId}`)
+      .then((res) => res.data)
+      .catch(errorHandler)
+  },
+
+  getTeacherLessons(teacherId) {
+    return service
+      .get(`/api/lessons/student/${teacherId}`)
+      .then((res) => res.data)
+      .catch(errorHandler)
+  },
+
+  getLesson(id) {
+    return service
+      .get(`/api/lessons/${id}`)
+      .then((res) => res.data)
+      .catch(errorHandler)
+  },
+
+  createLesson(lesson) {
+    return service 
+      .post('/api/lessons', lesson)
+      .then((res) => res.data)
+      .catch(errorHandler)
+  },
+
+  deleteLesson(id) {
+    return service 
+      .delete(`/api/lessons/${id}`)
+      .then((res) => res.data)
+      .catch(errorHandler)
   }
+  
 }
