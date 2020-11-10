@@ -1,5 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 
+:root {
+  --dark-grey:#1e1e2f;
+  --darker-grey:#151522;
+  --light-grey: #777;
+  --light-purple: #c247a6;
+  --dark-purple: #5e1447;
+  --standard-margin-padding: 20px;
+  --little-margin-padding: 10px;
+}
+
+::-webkit-scrollbar {
+  width: var(--little-margin-padding);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker-grey);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-grey);
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -1,0 +1,12 @@
+.Minibrowser {
+	height: 100%;
+	width: 100%;
+}
+
+iframe {
+	height: 100%;
+	width: 100%;
+	background-color: white;
+	box-sizing: border-box;
+	overflow: auto;
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../styles/Minibrowser.css'
 
 const Minibrowser = props => {
 	const { 
@@ -14,7 +15,7 @@ const Minibrowser = props => {
 	}
 	
 	return (
-		<div>
+		<div className="Minibrowser">
 			<div className="lessonName">
 				<button onClick={ handleClick }>Run</button>
 				<p>Lesson : { lessonName }</p>
@@ -24,8 +25,12 @@ const Minibrowser = props => {
 				title="output"
 				sandbox="allow-scripts"
 				frameBorder="0"
-				width="100vw"
-				height="100vh"
+				width="100%"
+				height="100%"
+				style={{
+					maxHeight: '100%',
+					maxWidth: '100%'
+				}}
             />
 		</div>
 	)

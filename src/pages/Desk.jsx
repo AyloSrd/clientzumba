@@ -21,6 +21,7 @@ import {
 import Peer from 'peerjs'
 import { withUser } from '../components/Auth/withUser'
 import apiHandler from '../api/apiHandler'
+import '../styles/Desk.css'
 
 const Desk = props => {
 	console.log(props)
@@ -113,7 +114,7 @@ const Desk = props => {
 			<body>
 				${ html }
 			</body>
-			<script type="text/babel">
+			<script ${ library === 'react' ? 'type=text/babel' : ''}>
 				${ js }
 			</script>
 			</html>
@@ -181,7 +182,7 @@ const Desk = props => {
 		
 		const myPeer = new Peer(undefined, {
 			secure: true, 
-			host: 'peerjs-server-codeschool.herokuapp.com', 
+			host: process.env.REACT_APP_PEER_SERVER_URL, 
 			port: 443
     	})
 		setMyPeer(myPeer)
@@ -231,85 +232,89 @@ const Desk = props => {
 	console.log('peers') 
 
 	return (
-		<div>
-			<div className="panel editors">
-				<div className="tab">
-					<button 
-					name="htmlTab" 
-					className={`Tablinks ${ isHtmlTabOpen ? 'open' : '' }`} 
-					onClick={openTab}>index.html</button>
-					<button 
-						name="cssTab" 
-						className={`Tablinks ${ isCssTabOpen ? 'open' : '' }`} 
-						onClick={openTab}>styles.css</button>
-					<button 
-						name="jsTab" 
-						className={`Tablinks ${ isJsTabOpen ? 'open' : '' }`} 
-						onClick={openTab}>app.js</button>
-					{
-						role ==='student' && (
-							<>
-								<button 
-									onClick= {
-									() =>{
-										setIsPaused(prevPaused => !prevPaused)
-									}}
+		<>
+			<div id="DeskContainer">
+				<div className="panel editors">
+					<div className="Tab">
+						<button 
+						name="htmlTab" 
+						className={`Tablinks ${ isHtmlTabOpen ? 'open' : '' }`} 
+						onClick={openTab}>index.html</button>
+						<button 
+							name="cssTab" 
+							className={`Tablinks ${ isCssTabOpen ? 'open' : '' }`} 
+							onClick={openTab}>styles.css</button>
+						<button 
+							name="jsTab" 
+							className={`Tablinks ${ isJsTabOpen ? 'open' : '' }`} 
+							onClick={openTab}>app.js</button>
+						{
+							role ==='student' && (
+								<>
+									<button 
+										onClick= {
+										() =>{
+											setIsPaused(prevPaused => !prevPaused)
+										}}
+										className="Tablinks Right"
+									>
+										<div 
+											className={
+											isPaused 
+											? 'Play' 
+											: 'Pause'
+											}>
+										</div>
+									</button>
+									<button 
+									id="saveBtn" 
+									onClick= {handleSave}
 									className="Tablinks Right"
-								>pause
-									<div 
-										className={
-										isPaused 
-										? 'Play' 
-										: 'Pause'
-										}>
-									</div>
+								>
+									save
 								</button>
-								<button 
-								id="saveBtn" 
-								onClick= {handleSave}
-								className="Tablinks Right"
-							>
-								save
-							</button>
-						</>
-						)
+							</>
+							)
+						}
+					</div>
+					<Editor 
+						language="xml"
+						value={ html }
+						onChange={ handleChange }
+						open={ isHtmlTabOpen }
+					/>
+					<Editor 
+						language="css"
+						value={ css }
+						onChange={ handleChange }
+						open={ isCssTabOpen }
+					/>
+					<Editor 
+						language="javascript"
+						value={ js }
+						onChange={ handleChange }
+						open={ isJsTabOpen }
+					/>
+				</div>
+				<div className="panel minibrowser">
+					<Minibrowser 
+						srcDoc={ srcDoc }
+						lessonName={ lessonName }
+						handleRunMinibrowser={ handleRunMinibrowser }
+						sendRunMinibrowser={ handleSendRunMinibrowser }
+					/>
+				</div>
+				<div id="VideoContainer">
+					<div className="Video">
+						<video playsInline muted ref={userVideo} autoPlay/>
+						<h2>{peerId}</h2>
+					</div>
+					{
+						calls.map((call, index) => <Video key={index} call={call} stream={stream} />)
 					}
 				</div>
-				<Editor 
-					language="xml"
-					value={ html }
-					onChange={ handleChange }
-					open={ isHtmlTabOpen }
-				/>
-				<Editor 
-					language="css"
-					value={ css }
-					onChange={ handleChange }
-					open={ isCssTabOpen }
-				/>
-				<Editor 
-					language="javascript"
-					value={ js }
-					onChange={ handleChange }
-					open={ isJsTabOpen }
-				/>
 			</div>
-			<div className="panel minibrowser">
-				<Minibrowser 
-					srcDoc={ srcDoc }
-					lessonName={ lessonName }
-					handleRunMinibrowser={ handleRunMinibrowser }
-					sendRunMinibrowser={ handleSendRunMinibrowser }
-				/>
-			</div>
-			<div className="Video">
-				<video playsInline muted ref={userVideo} autoPlay/>
-				<h2>{peerId}</h2>
-			</div>
-			{
-				calls.map((call, index) => <Video key={index} call={call} stream={stream} />)
-			}
-		</div>
+		</>
 	)
 }
 

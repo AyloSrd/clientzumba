@@ -1,9 +1,13 @@
-import React from "react";
+import React from "react"
+import { NavLink } from "react-router-dom"
 
-const Profile = (props) => {
+const Profile = props => {
   return (
     <div>
       <h1>Protected profile</h1>
+      <NavLink to="/desk">
+        Desk
+      </NavLink>
     </div>
   );
 };
