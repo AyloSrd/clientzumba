@@ -75,7 +75,7 @@ export const callPeer = ( stream, myPeer, setCalls ) => {
 export const removeClosedCall = setCalls => {
 	if (socket) {
 		socket.on('I quit', peerId => {
-			setCalls(prevCalls => prevCalls.filter(c => c.peer === peerId))
+			setCalls(prevCalls => prevCalls.filter(c => c.peer !== peerId))
 		})
 	}
 }

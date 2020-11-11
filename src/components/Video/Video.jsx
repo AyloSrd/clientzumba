@@ -13,7 +13,7 @@ const Video = ({ call, stream }) => {
 
 	return(
 		<div className="Video SmallV">
-          <video playsInline muted ref={classmateVideo} autoPlay/>
+          <video playsInline ref={classmateVideo} autoPlay/>
 			<p>{call.peer}</p>
         </div>
 	)

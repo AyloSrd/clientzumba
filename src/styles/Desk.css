@@ -19,9 +19,11 @@ body {
 	display: flex;
 	flex-direction: column;
 }
+
   
   
 #DeskContainer {
+	position: absolute;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 1px var(--darker-grey);
@@ -29,7 +31,7 @@ body {
 	max-height: 100%;
 	background-color: var(--darker-grey);
 	max-width: 100%;
-	overflow: hidden;
+	overflow: auto;
 	border: solid 0.5px var(--darker-grey);
 }
   
@@ -46,6 +48,13 @@ body {
 	background-color: var(--dark-grey);
   }
   
+  .iconContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+  }
+
   .centerContent p {
 	height: 40px;
 	display: flex;
@@ -79,32 +88,100 @@ body {
   
   #saveBtn {
 	margin-right: var(--little-margin-padding)
-  }
-  
-  .Tablinks img {
-	height: 20px;
-	width: 20px;
-	border-radius: 0;
-  }
-  
-  div.Play {
-	width: 20px;
-	height: 20px;
-	border-style: solid;
-	border-width: 10px 0px 10px 20px;
-	border-color: transparent transparent transparent white;
+}
+
+div.Play {
+	color: white;
+	width: 15px;
+	height: 15px;
+	border-right: solid 2px white;
+	border-top: solid 2px white;
+	 -webkit-transform: rotate(45deg) translate(-2px, 2px);
+			transform: rotate(45deg) translate(-2px, 2px);
 	transition: 0.1s;
+  }
+
+  div.Play:after {
+	content: '';
+	position: absolute;
+	color:white;
+	width: 1px;
+	height: 20px;
+	border-left: solid 2px white;
+			transform: rotate(-45deg) translate(2px, -3px);
   }
   
   div.Pause {
-	width: 20px;
-	height: 20px;
-	border-style: double;
-	border-width: 0px 0px 0px 20px;
-	border-color: transparent transparent transparent white;
+	color: white;
+	width: 12px;
+	height: 12px;
+	border-right: solid 2px white;
+	border-left: solid 2px white;
 	transition: 0.1s;
-  
   }
+  
+  div.Save {
+	color: #000;
+	position: absolute;
+	margin-left: 0;
+	margin-top: 7px;
+	width: 18px;
+	height: 5px;
+	border-radius: 1px;
+	border: solid 2px white;
+	border-top: none;
+  }
+  
+  div.Save:before {
+	content: '';
+	position: absolute;
+	left: 6px;
+	top: -11px;
+	width: 2px;
+	height: 11px;
+	background-color: white;
+  }
+  
+  div.Save:after {
+	content: '';
+	position: absolute;
+	left: 4px;
+	top: -6px;
+	width: 6px;
+	height: 6px;
+	border-top: solid 2px white;
+	border-right: solid 2px white;
+	-webkit-transform: rotate(135deg);
+			transform: rotate(135deg);
+  }
+  
+  div.Run {
+	color: #000;
+	position: absolute;
+	margin-left: 0;
+	margin-top: 0;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	border-top: solid 2px white;
+	border-bottom: solid 2px white;
+	border-left: solid 2px transparent;
+	border-right: solid 2px white;
+  }
+  
+  div.Run:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 11px;
+	width: 5px;
+	height: 5px;
+	border-top: solid 2px white;
+	border-left: solid 2px white;
+	-webkit-transform: rotate(-22.5deg);
+			transform: rotate(-22.5deg);
+  }
+  
   
 .panel {
 	height: 100vh;
@@ -124,13 +201,13 @@ body {
 	padding: var(--little-margin-padding);
 	display: flex;
 	align-items: flex-end;
-	z-index: 100000;
   }
   
   .Video {
 	height: 150px;
 	width: 150px;
 	border-radius: 50%;
+	background-color: #5e1447;
 	overflow: hidden;
   }
   
@@ -139,8 +216,16 @@ body {
 	width: 80px;
   }
   
+  .SmallV p {
+	  position: absolute;
+  }
+
   video {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
   }
+
+
+  
+  

@@ -1,15 +1,17 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import LaunchLessonSection from '../components/LaunchLesson/LaunchSessionSection'
+import JoinLesson from '../components/LaunchLesson/JoinLesson'
+import { withUser } from '../components/Auth/withUser'
 
 const Profile = props => {
+  console.log('profile', props)
   return (
     <div>
       <h1>Protected profile</h1>
-      <NavLink to="/desk">
-        Desk
-      </NavLink>
-    </div>
+      <LaunchLessonSection props={props} />
+      <JoinLesson props={props} />
+    </div> 
   );
 };
 
-export default Profile;
+export default withUser(Profile)

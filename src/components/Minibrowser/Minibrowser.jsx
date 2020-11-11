@@ -17,7 +17,16 @@ const Minibrowser = props => {
 	return (
 		<div className="Minibrowser">
 			<div className="lessonName">
-				<button onClick={ handleClick }>Run</button>
+				<button 
+				className='Tablink'
+				onClick={ handleClick }
+				>
+					<div className='iconContainer'>
+						<div 
+							className='Run'>
+						</div>
+					</div>
+				</button>
 				<p>Lesson : { lessonName }</p>
 			</div>
 			<iframe 

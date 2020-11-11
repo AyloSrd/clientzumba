@@ -1,6 +1,9 @@
-export const getCamera = (userVideo, setStream) => {
+export const getCamera = (userVideo, setStream, role) => {
 	navigator.mediaDevices.getUserMedia({
-		video: true,
+		video: {
+			width: { ideal: 320 },
+			height: { ideal: 240 } 
+		} ,
 		audio: true
 	  }).then(stream => {
 		  console.log('stream ready')

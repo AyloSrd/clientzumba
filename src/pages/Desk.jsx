@@ -31,6 +31,8 @@ const Desk = props => {
 		role, 
 		_id : userId
 	} = props.context.user
+
+	const room = props.location.state.room
 	
 	const [ html, setHtml ] = useState('<h1 id="test">test</h1>')
 	const [ css, setCss ] = useState('body { background-color : whitesmoke; height: 500px; width: 500px; color : #333; }')
@@ -48,8 +50,6 @@ const Desk = props => {
 	const [ library, setLibrary ] = useState('react')
 	const [ srcDoc, setSrcDoc ] = useState('')
 	const [ miniBrowserCounter, setMinibrowserCounter ] = useState(0)
-	const [ lessonName, setLessonName ] = useState('test')
-
 	// video
 	const userVideo = useRef()
 	// const classmateVideo = useRef()
@@ -61,8 +61,6 @@ const Desk = props => {
 	const [ calls, setCalls ] = useState([])
 
 	const [ socketConnected, setSocketConnected ] = useState(false)
-
-	const [ room, setRoom ] = useState('react-room')
 
 	const handleChange = (value, lang) => {
 		switch(lang) {
@@ -178,7 +176,7 @@ const Desk = props => {
 		getRunMinibrowser(setMinibrowserCounter, miniBrowserCounter)
 		getActiveTab(setIsHtmlTabOpen, setIsCssTabOpen, setIsJsTabOpen)
 
-		getCamera(userVideo, setStream)
+		getCamera(userVideo, setStream, role)
 		
 		const myPeer = new Peer(undefined, {
 			secure: true, 
@@ -258,12 +256,14 @@ const Desk = props => {
 										}}
 										className="Tablinks Right"
 									>
-										<div 
-											className={
-											isPaused 
-											? 'Play' 
-											: 'Pause'
-											}>
+										<div className='iconContainer'>
+											<div 
+												className={
+												isPaused 
+												? 'Play' 
+												: 'Pause'
+												}>
+											</div>
 										</div>
 									</button>
 									<button 
@@ -271,7 +271,11 @@ const Desk = props => {
 									onClick= {handleSave}
 									className="Tablinks Right"
 								>
-									save
+									<div className='iconContainer'>
+											<div 
+												className='Save'>
+											</div>
+										</div>
 								</button>
 							</>
 							)
@@ -299,14 +303,14 @@ const Desk = props => {
 				<div className="panel minibrowser">
 					<Minibrowser 
 						srcDoc={ srcDoc }
-						lessonName={ lessonName }
+						lessonName={ room }
 						handleRunMinibrowser={ handleRunMinibrowser }
 						sendRunMinibrowser={ handleSendRunMinibrowser }
 					/>
 				</div>
 				<div id="VideoContainer">
 					<div className="Video">
-						<video playsInline muted ref={userVideo} autoPlay/>
+						<video playsInline controls muted ref={userVideo} autoPlay/>
 						<h2>{peerId}</h2>
 					</div>
 					{
