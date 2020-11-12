@@ -1,95 +1,35 @@
 * {
 	box-sizing: border-box;
-}
-  
-:root {
-	--dark-grey:#1e1e2f;
-	--darker-grey:#151522;
-	--light-grey: #777;
-	--light-purple: #c247a6;
-	--dark-purple: #5e1447;
-	--standard-margin-padding: 20px;
-	--little-margin-padding: 10px;
-}
-
-body {
-	margin: 0;
-	background-color: var(--dark-grey);
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-}
-
-  
+} 
   
 #DeskContainer {
 	position: absolute;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 1px var(--darker-grey);
+	grid-template-rows: calc(100vh - 84px);
+	align-items: center;
+	grid-gap:var(--large-unit);
+	padding: 0 var(--large-unit);
 	height: calc(100vh - 84px);
 	max-height: 100%;
-	background-color: var(--darker-grey);
 	max-width: 100%;
 	overflow: auto;
-	border: solid 0.5px var(--darker-grey);
 }
   
   /*--------- TAB --------- */
-  
-  .Tab {
-	height: 40px;
-  }
-  
-  .centerContent {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--dark-grey);
-  }
-  
-  .iconContainer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 40px;
-  }
 
-  .centerContent p {
-	height: 40px;
-	display: flex;
-	align-items: center;
-  }
-  
-  .Tablinks {
-	background-color: transparent;
-	border: none; 
-	color: white;
-	cursor: pointer;
-	height: 100%;
-	padding: 0 var(--little-margin-padding);
-  }
-  
-  .Tablinks:hover {
-	background-color: var(--light-grey);
-  }
-  
-  .Tablinks.open {
-	background-color: var(--dark-grey);
-  }
-  
-  .Tablinks:focus{
-	outline: none;
-  }
-  
-  .Tablinks.Right {
-	float:right;
-  }
-  
-  #saveBtn {
-	margin-right: var(--little-margin-padding)
+#Tab {
+	margin-bottom: calc(var(--large-unit));
 }
 
+#Tab button {
+	margin-right: var(--standard-unit);
+}
+
+#Tab button:last-child {
+	margin-right: 0;
+}
+  
 div.Play {
 	color: white;
 	width: 15px;
@@ -184,48 +124,53 @@ div.Play {
   
   
 .panel {
-	height: 100vh;
-	width: 50vw;
+	height: 70vh;
+	width: 45vw;
 	max-height: 100%;
 	max-width: 100%;
 	display: flex;
 	flex-direction: column;
 }
+
+  /*--------- EDITORS --------- */
+
+.EditorsWrapper {
+	height: 100%;
+	width: 50vw;
+	max-width: 100%;
+	padding:var(--standard-unit)
+}
   
   /*--------- VIDEOS --------- */
   
-  #VideoContainer {
+#VideoContainer {
 	position: fixed;
 	bottom: 0px;
 	right: 0px;
-	padding: var(--little-margin-padding);
+	padding: var(--little-unit);
 	display: flex;
 	align-items: flex-end;
-  }
+}
   
-  .Video {
+.Video {
 	height: 150px;
 	width: 150px;
 	border-radius: 50%;
 	background-color: #5e1447;
 	overflow: hidden;
-  }
-  
-  .SmallV {
+}
+
+.SmallV {
 	height: 80px;
 	width: 80px;
-  }
-  
-  .SmallV p {
-	  position: absolute;
-  }
+}
 
-  video {
+.SmallV p {
+	position: absolute;
+}
+
+video {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-  }
-
-
-  
-  
+}

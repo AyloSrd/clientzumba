@@ -1,35 +1,56 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 
 :root {
+  --primary: #273238;
+  --secondary:#2d749a;
+  --secondary-light: #47b6f2;;
   --dark-grey:#1e1e2f;
   --darker-grey:#151522;
   --light-grey: #777;
   --light-purple: #c247a6;
   --dark-purple: #5e1447;
-  --standard-margin-padding: 20px;
-  --little-margin-padding: 10px;
+  --standard-unit: 25px;
+  --little-unit: 10px;
+  --large-unit: 60px;
 }
 
 ::-webkit-scrollbar {
-  width: var(--little-margin-padding);
+  width: var(--little-unit);
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--darker-grey);
+  background: var(--secondary);
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 2px #133242, 
+              inset -1px -1px 2px #47b6f2;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--dark-grey);
+  border-radius: 5px;
+  width:calc(var(--standard-unit)/2);
+  background: var(--primary);
+  box-shadow: inset 1px 1px 2px #111618, 
+              inset -1px -1px 2px #3d4f58;
 }
 
-* {
+*, *:focus {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
 html {
+  font-size: 12px;
   font-family: "Manrope", sans-serif;
+}
+
+body {
+	margin: 0;
+	background-color: var(--primary);
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 a {
@@ -39,4 +60,88 @@ a {
 
 ul {
   list-style-type: none;
+}
+
+button {
+  border: none;
+}
+
+.BgPrimary {
+  background-color: var(--primary);
+}
+
+.Flex {
+  display: flex;
+}
+
+.Column {
+  flex-direction: column;
+}
+
+.CenteredVHContent {
+  align-items: center;
+  justify-content: center;
+}
+
+.SpaceBetween {
+  justify-content: space-between;
+}
+
+button.NeuBtn {
+  cursor: pointer;
+  width: auto;
+  color: white;
+  padding: var(--little-unit) var(--standard-unit);
+  border-radius: var(--little-unit);
+  background: linear-gradient(145deg, #2a363c, #232d32);
+  box-shadow:  5px 5px 10px #111618, 
+              -5px -5px 10px #3d4f58;
+  transition: 0.5s;
+  transition-timing-function: ease-out;    
+}
+
+button.NeuBtn:hover {
+  color:var(--secondary-light);
+  background: linear-gradient(145deg, #232d32, #2a363c);
+  box-shadow:  3px 3px 10px #111618, 
+              -3px -3px 10px #3d4f58;
+  transition: 0.5s;
+  transition-timing-function: ease-out;
+}
+
+button.NeuBtn:hover div {
+  border-color: var(--secondary-light);
+}
+
+button.NeuBtn:active, button.NeuBtn.Down {
+  background: var(--secondary);
+  box-shadow: inset 5px 5px 10px #133242, 
+              inset -5px -5px 10px #47b6f2;
+  transition: 0.5s;
+  transition-timing-function: ease-out;
+}
+
+/* button.NeuBtn:active, button.NeuBtn.Down {
+  background: var(--primary);
+  color: var(--secondary-light);
+  box-shadow: inset 5px 5px 10px #111618, 
+              inset -5px -5px 10px #3d4f58;
+  transition: 0.5s;
+  transition-timing-function: ease-out;
+} */
+
+button.NeuBtn.Down:hover {
+  color: white; 
+  transition: 0.5s;
+  transition-timing-function: ease-out;
+}
+
+button.NeuBtn.Down:hover div {
+  border-color: white;
+}
+
+div.Card {
+  border-radius: var(--little-unit);
+  box-shadow:  7px 7px 14px #101416, 
+             -7px -7px 14px #3e505a;
 }

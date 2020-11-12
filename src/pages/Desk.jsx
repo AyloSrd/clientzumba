@@ -231,74 +231,92 @@ const Desk = props => {
 
 	return (
 		<>
-			<div id="DeskContainer">
+			<div 
+				id="DeskContainer"
+				className="BgPrimary"
+			>
 				<div className="panel editors">
-					<div className="Tab">
-						<button 
-						name="htmlTab" 
-						className={`Tablinks ${ isHtmlTabOpen ? 'open' : '' }`} 
-						onClick={openTab}>index.html</button>
-						<button 
-							name="cssTab" 
-							className={`Tablinks ${ isCssTabOpen ? 'open' : '' }`} 
-							onClick={openTab}>styles.css</button>
-						<button 
-							name="jsTab" 
-							className={`Tablinks ${ isJsTabOpen ? 'open' : '' }`} 
-							onClick={openTab}>app.js</button>
-						{
-							role ==='student' && (
-								<>
-									<button 
-										onClick= {
-										() =>{
-											setIsPaused(prevPaused => !prevPaused)
-										}}
-										className="Tablinks Right"
-									>
-										<div className='iconContainer'>
-											<div 
-												className={
-												isPaused 
-												? 'Play' 
-												: 'Pause'
-												}>
+					<div 
+						className="Flex SpaceBetween BgPrimary"
+						id="Tab"	
+					>
+						<div className="Flex">
+							<button 
+								name="htmlTab" 
+								className={`NeuBtn ${ isHtmlTabOpen ? 'Down' : '' }`} 
+								onClick={openTab}
+							>
+								index.html
+							</button>
+							<button 
+								name="cssTab" 
+								className={`NeuBtn ${ isCssTabOpen ? 'Down' : '' }`} 
+								onClick={openTab}>styles.css</button>
+							<button 
+								name="jsTab" 
+								className={`NeuBtn ${ isJsTabOpen ? 'Down' : '' }`} 
+								onClick={openTab}
+							>
+								app.js
+							</button>
+						</div>
+						<div className="Flex">
+							{
+								role ==='student' && (
+									<>
+										<button 
+											onClick= {
+											() =>{
+												setIsPaused(prevPaused => !prevPaused)
+											}}
+											className={`NeuBtn ${isPaused ? 'Down' : ''}`}
+										>
+											<div className='iconContainer'>
+												<div 
+													className={
+													isPaused 
+													? 'Play' 
+													: 'Pause'
+													}>
+												</div>
 											</div>
-										</div>
-									</button>
-									<button 
-									id="saveBtn" 
-									onClick= {handleSave}
-									className="Tablinks Right"
-								>
-									<div className='iconContainer'>
-											<div 
-												className='Save'>
+										</button>
+										<button 
+											id="saveBtn" 
+											onClick= {handleSave}
+											className="NeuBtn"
+										>
+											<div className='iconContainer'>
+												<div 
+													className='Save'>
+												</div>
 											</div>
-										</div>
-								</button>
-							</>
-							)
-						}
+										</button>
+								</>
+								)
+							}
+						</div>
 					</div>
-					<Editor 
-						language="xml"
-						value={ html }
-						onChange={ handleChange }
-						open={ isHtmlTabOpen }
-					/>
-					<Editor 
-						language="css"
-						value={ css }
-						onChange={ handleChange }
-						open={ isCssTabOpen }
-					/>
-					<Editor 
-						language="javascript"
-						value={ js }
-						onChange={ handleChange }
-						open={ isJsTabOpen }
-					/>
+					<div className="Flex Column Card BgPrimary EditorsWrapper">
+						<Editor 
+							language="xml"
+							value={ html }
+							onChange={ handleChange }
+							open={ isHtmlTabOpen }
+						/>
+						<Editor 
+							language="css"
+							value={ css }
+							onChange={ handleChange }
+							open={ isCssTabOpen }
+						/>
+						<Editor 
+							language="javascript"
+							value={ js }
+							onChange={ handleChange }
+							open={ isJsTabOpen }
+						/>
+					</div>
 				</div>
 				<div className="panel minibrowser">
 					<Minibrowser 
