@@ -35,12 +35,12 @@ const Desk = props => {
 	const room = props.location.state.room
 	
 	const [ html, setHtml ] = useState('<h1 id="test">test</h1>')
-	const [ css, setCss ] = useState('body { background-color : whitesmoke; height: 500px; width: 500px; color : #333; }')
+	const [ css, setCss ] = useState('h1 { color : #333; }')
 	const [ js, setJs ] = useState('document.getElementById("test").innerHTML += " test"')
 
 	const [isPaused, setIsPaused] = useState(false)
 	const [ incomingHtml, setIncomingHtml ] = useState('<h1 id="test">test</h1>')
-	const [ incomingCss, setIncomingCss ] = useState('body { background-color : whitesmoke; height: 500px; width: 500px; color : #333; }')
+	const [ incomingCss, setIncomingCss ] = useState('h1 { color : #333; }')
 	const [ incomingJs, setIncomingJs ] = useState('document.getElementById("test").innerHTML += " test"')
 
 	const [ isHtmlTabOpen, setIsHtmlTabOpen ] = useState(true)
@@ -235,7 +235,7 @@ const Desk = props => {
 				id="DeskContainer"
 				className="BgPrimary"
 			>
-				<div className="panel editors">
+				<div className="panel">
 					<div 
 						className="Flex SpaceBetween BgPrimary"
 						id="Tab"	
@@ -246,18 +246,18 @@ const Desk = props => {
 								className={`NeuBtn ${ isHtmlTabOpen ? 'Down' : '' }`} 
 								onClick={openTab}
 							>
-								index.html
+								html
 							</button>
 							<button 
 								name="cssTab" 
 								className={`NeuBtn ${ isCssTabOpen ? 'Down' : '' }`} 
-								onClick={openTab}>styles.css</button>
+								onClick={openTab}>css</button>
 							<button 
 								name="jsTab" 
 								className={`NeuBtn ${ isJsTabOpen ? 'Down' : '' }`} 
 								onClick={openTab}
 							>
-								app.js
+								js
 							</button>
 						</div>
 						<div className="Flex">
@@ -318,7 +318,7 @@ const Desk = props => {
 						/>
 					</div>
 				</div>
-				<div className="panel minibrowser">
+				<div className="panel">
 					<Minibrowser 
 						srcDoc={ srcDoc }
 						lessonName={ room }

@@ -1,12 +1,56 @@
 .Minibrowser {
 	height: 100%;
 	width: 100%;
+	max-height: 100%;
+	max-width: 100%;
 }
 
+#BrowserHeader {
+	margin-bottom: 38px;
+}
+
+#RunBtn {
+	height: 38px;
+}
+ 
+div.Run {
+	position: absolute;
+	margin-left: 0;
+	margin-top: 0;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	border-top: solid 2px white;
+	border-bottom: solid 2px white;
+	border-left: solid 2px transparent;
+	border-right: solid 2px white;
+  }
+  
+  div.Run:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 11px;
+	width: 5px;
+	height: 5px;
+	border-top: solid 2px white;
+	border-left: solid 2px white;
+	-webkit-transform: rotate(-22.5deg);
+			transform: rotate(-22.5deg);
+  }
+
+  #IframeContainer {
+	padding: var(--standard-unit);
+	height: 100%;
+	max-height: 100%;
+	max-width: 100%;
+  }
+  
 iframe {
+	overflow: visible;
 	height: 100%;
 	width: 100%;
+	max-height: 100%;
+	max-width: 100%;
 	background-color: white;
-	box-sizing: border-box;
-	overflow: auto;
 }

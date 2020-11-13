@@ -3,14 +3,15 @@
 } 
   
 #DeskContainer {
-	position: absolute;
+	position: relative;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 4fr 5fr;
 	grid-template-rows: calc(100vh - 84px);
 	align-items: center;
 	grid-gap:var(--large-unit);
 	padding: 0 var(--large-unit);
 	height: calc(100vh - 84px);
+	width: 100%;
 	max-height: 100%;
 	max-width: 100%;
 	overflow: auto;
@@ -19,11 +20,11 @@
   /*--------- TAB --------- */
 
 #Tab {
-	margin-bottom: calc(var(--large-unit));
+	margin-bottom: 38px;
 }
 
 #Tab button {
-	margin-right: var(--standard-unit);
+	margin-right: calc(var(--standard-unit)*0.75);
 }
 
 #Tab button:last-child {
@@ -61,10 +62,9 @@ div.Play {
   }
   
   div.Save {
-	color: #000;
 	position: absolute;
-	margin-left: 0;
-	margin-top: 7px;
+	margin-left: -7px;
+	margin-top: 3px;
 	width: 18px;
 	height: 5px;
 	border-radius: 1px;
@@ -95,37 +95,9 @@ div.Play {
 			transform: rotate(135deg);
   }
   
-  div.Run {
-	color: #000;
-	position: absolute;
-	margin-left: 0;
-	margin-top: 0;
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	border-top: solid 2px white;
-	border-bottom: solid 2px white;
-	border-left: solid 2px transparent;
-	border-right: solid 2px white;
-  }
-  
-  div.Run:before {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 11px;
-	width: 5px;
-	height: 5px;
-	border-top: solid 2px white;
-	border-left: solid 2px white;
-	-webkit-transform: rotate(-22.5deg);
-			transform: rotate(-22.5deg);
-  }
-  
-  
 .panel {
 	height: 70vh;
-	width: 45vw;
+	/* width: 60vw; */
 	max-height: 100%;
 	max-width: 100%;
 	display: flex;
@@ -136,9 +108,9 @@ div.Play {
 
 .EditorsWrapper {
 	height: 100%;
-	width: 50vw;
+	width: 100%;
 	max-width: 100%;
-	padding:var(--standard-unit)
+	padding: var(--standard-unit);
 }
   
   /*--------- VIDEOS --------- */

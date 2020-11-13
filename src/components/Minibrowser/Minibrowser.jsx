@@ -15,11 +15,16 @@ const Minibrowser = props => {
 	}
 	
 	return (
-		<div className="Minibrowser">
-			<div className="lessonName">
+		<div className="Minibrowser Flex Column SpaceBetween">
+			<div 
+				className="Flex SpaceBetween"
+				id="BrowserHeader"
+			>
+				<p>Lesson : { lessonName }</p>
 				<button 
-				className='Tablink'
+				className='NeuBtn'
 				onClick={ handleClick }
+				id="RunBtn"
 				>
 					<div className='iconContainer'>
 						<div 
@@ -27,20 +32,18 @@ const Minibrowser = props => {
 						</div>
 					</div>
 				</button>
-				<p>Lesson : { lessonName }</p>
 			</div>
-			<iframe 
-				srcDoc={ srcDoc }
-				title="output"
-				sandbox="allow-scripts"
-				frameBorder="0"
-				width="100%"
-				height="100%"
-				style={{
-					maxHeight: '100%',
-					maxWidth: '100%'
-				}}
-            />
+			<div 
+				className="Card"
+				id="IframeContainer"
+			>			
+				<iframe 
+					srcDoc={ srcDoc }
+					title="output"
+					sandbox="allow-scripts"
+					frameBorder="0"
+				/>
+			</div>
 		</div>
 	)
 }

@@ -9,9 +9,9 @@
   --light-grey: #777;
   --light-purple: #c247a6;
   --dark-purple: #5e1447;
-  --standard-unit: 25px;
-  --little-unit: 10px;
-  --large-unit: 60px;
+  --standard-unit: 2rem;
+  --little-unit: 1rem;
+  --large-unit: 5rem;
 }
 
 ::-webkit-scrollbar {
@@ -83,6 +83,14 @@ button {
   justify-content: center;
 }
 
+.AlignCenterContent {
+  align-items: center;
+}
+
+.JustifyCenterContent {
+  justify-content: center;
+}
+
 .SpaceBetween {
   justify-content: space-between;
 }
@@ -103,8 +111,8 @@ button.NeuBtn {
 button.NeuBtn:hover {
   color:var(--secondary-light);
   background: linear-gradient(145deg, #232d32, #2a363c);
-  box-shadow:  3px 3px 10px #111618, 
-              -3px -3px 10px #3d4f58;
+  box-shadow:  3px 3px 5px #111618, 
+              -3px -3px 5px #3d4f58;
   transition: 0.5s;
   transition-timing-function: ease-out;
 }
