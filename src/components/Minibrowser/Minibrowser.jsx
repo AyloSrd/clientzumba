@@ -17,14 +17,20 @@ const Minibrowser = props => {
 	return (
 		<div className="Minibrowser Flex Column SpaceBetween">
 			<div 
-				className="Flex SpaceBetween"
+				className="Flex SpaceBetween AlignCenterContent"
 				id="BrowserHeader"
-			>
-				<p>Lesson : { lessonName }</p>
+			>	
+				<div 
+					className="Flex"
+					id="LessonName"
+				>
+					<p className="text">Lesson :</p>
+					<input value={ lessonName } />
+				</div>
 				<button 
-				className='NeuBtn'
-				onClick={ handleClick }
-				id="RunBtn"
+					className='NeuBtn'
+					onClick={ handleClick }
+					id="RunBtn"
 				>
 					<div className='iconContainer'>
 						<div 

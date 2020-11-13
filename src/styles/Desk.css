@@ -63,7 +63,7 @@ div.Play {
   
   div.Save {
 	position: absolute;
-	margin-left: -7px;
+	margin-left: -8px;
 	margin-top: 3px;
 	width: 18px;
 	height: 5px;
@@ -97,7 +97,6 @@ div.Play {
   
 .panel {
 	height: 70vh;
-	/* width: 60vw; */
 	max-height: 100%;
 	max-width: 100%;
 	display: flex;

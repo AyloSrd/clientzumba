@@ -54,3 +54,17 @@ iframe {
 	max-width: 100%;
 	background-color: white;
 }
+
+#LessonName {
+	flex-grow:  1;
+	margin-left: var(--little-unit);
+}
+
+#LessonName p {
+	width: max-content;
+} 
+
+#LessonName input {
+	flex-grow:  1;
+	margin: 0 var(--standard-unit) 0 var(--little-unit);
+} 

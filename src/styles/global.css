@@ -153,3 +153,8 @@ div.Card {
   box-shadow:  7px 7px 14px #101416, 
              -7px -7px 14px #3e505a;
 }
+
+.text {
+  color: white;
+  text-shadow: 1px 1px 0  #101416;
+}
