@@ -11,12 +11,13 @@
 
 #RunBtn {
 	height: 38px;
+	position: relative;
 }
  
 div.Run {
 	position: absolute;
-	margin-left: 0;
-	margin-top: 0;
+	margin-left: -5px;
+	margin-top: -7px;
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
@@ -24,19 +25,26 @@ div.Run {
 	border-bottom: solid 2px white;
 	border-left: solid 2px transparent;
 	border-right: solid 2px white;
+	transition: 0.5s;
   }
   
   div.Run:before {
 	content: '';
 	position: absolute;
-	left: 0;
-	top: 11px;
-	width: 5px;
-	height: 5px;
+	left: -1px;
+	top: 8px;
+	width: 6px;
+	height: 6px;
 	border-top: solid 2px white;
 	border-left: solid 2px white;
 	-webkit-transform: rotate(-22.5deg);
 			transform: rotate(-22.5deg);
+	transition: 0.5s ease-out;
+  }
+
+  #RunBtn:hover div.Run {
+	-webkit-transform: rotate(360deg);
+			transform: rotate(360deg);
   }
 
   #IframeContainer {
@@ -66,5 +74,11 @@ iframe {
 
 #LessonName input {
 	flex-grow:  1;
+	border: none;
 	margin: 0 var(--standard-unit) 0 var(--little-unit);
+	padding: calc(var(--little-unit)/2) var(--little-unit);
+	background: #e7e7e7;
+	box-shadow: inset 5px 5px 6px #b9b9b9, 
+				inset -5px -5px 6px #ffffff;
+	border-radius: 30px;
 } 

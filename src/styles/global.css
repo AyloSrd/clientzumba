@@ -117,10 +117,6 @@ button.NeuBtn:hover {
   transition-timing-function: ease-out;
 }
 
-button.NeuBtn:hover div {
-  border-color: var(--secondary-light);
-}
-
 button.NeuBtn:active, button.NeuBtn.Down {
   background: var(--secondary);
   box-shadow: inset 5px 5px 10px #133242, 

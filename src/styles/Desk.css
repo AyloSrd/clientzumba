@@ -1,3 +1,62 @@
+@-webkit-keyframes save-before-animation {
+	0% {
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	  -webkit-transform: translateY(0);
+			  transform: translateY(0);
+	}
+	100% {
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	  -webkit-transform: translateY(-4px);
+			  transform: translateY(-4px);
+	}
+}
+@keyframes save-before-animation {
+	0% {
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	  -webkit-transform: translateY(0);
+			  transform: translateY(0);
+	}
+	100% {
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	  -webkit-transform: translateY(-4px);
+			  transform: translateY(-4px);
+	}
+}
+
+@-webkit-keyframes save-after-animation {
+	0% {
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	  -webkit-transform: translateY(0);
+			  transform: translateY(0);
+	}
+	100% {
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	  -webkit-transform: translateY(-5px);
+			  transform: translateY(-5px);
+	}
+}
+@keyframes save-after-animation {
+	0% {
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	  -webkit-transform: translateY(0) rotate(135deg);
+			  transform: translateY(0) rotate(135deg);
+	}
+	100% {
+		-webkit-transform: rotate(135deg);
+		transform: rotate(135deg);
+	  -webkit-transform: translateY(-5px) rotate(135deg);
+			  transform: translateY(-5px) rotate(135deg);
+	}
+}
+
+
 * {
 	box-sizing: border-box;
 } 
@@ -39,7 +98,7 @@ div.Play {
 	border-top: solid 2px white;
 	 -webkit-transform: rotate(45deg) translate(-2px, 2px);
 			transform: rotate(45deg) translate(-2px, 2px);
-	transition: 0.1s;
+	transition: 0.2s;
   }
 
   div.Play:after {
@@ -58,7 +117,7 @@ div.Play {
 	height: 12px;
 	border-right: solid 2px white;
 	border-left: solid 2px white;
-	transition: 0.1s;
+	transition: 0.2s;
   }
   
   div.Save {
@@ -94,6 +153,16 @@ div.Play {
 	-webkit-transform: rotate(135deg);
 			transform: rotate(135deg);
   }
+
+#SaveBtn:hover div.Save:before {
+	-webkit-animation: save-before-animation 0.5s ease-in alternate infinite;
+	        animation: save-before-animation 0.5s ease-in alternate infinite;
+}
+
+#SaveBtn:hover div.Save:after {
+	-webkit-animation: save-after-animation 0.5s ease-in alternate infinite;
+	        animation: save-after-animation 0.5s ease-in alternate infinite;
+}
   
 .panel {
 	height: 70vh;

@@ -21,11 +21,14 @@ const Minibrowser = props => {
 				id="BrowserHeader"
 			>	
 				<div 
-					className="Flex"
+					className="Flex AlignCenterContent"
 					id="LessonName"
 				>
 					<p className="text">Lesson :</p>
-					<input value={ lessonName } />
+					<input 
+						readOnly 
+						value={ lessonName } 
+					/>
 				</div>
 				<button 
 					className='NeuBtn'
