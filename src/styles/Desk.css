@@ -193,20 +193,11 @@ div.Play {
 }
   
 .Video {
-	height: 150px;
-	width: 150px;
+	height: 80px;
+	width: 80px;
 	border-radius: 50%;
 	background-color: #5e1447;
 	overflow: hidden;
-}
-
-.SmallV {
-	height: 80px;
-	width: 80px;
-}
-
-.SmallV p {
-	position: absolute;
 }
 
 video {

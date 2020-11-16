@@ -33,12 +33,13 @@ const Desk = props => {
 	} = props.context.user
 
 	const room = props.location.state.room
+	const [ library, typeOfSession  ] = room.split('-')
 	
 	const [ html, setHtml ] = useState('<h1 id="test">test</h1>')
 	const [ css, setCss ] = useState('h1 { color : #333; }')
 	const [ js, setJs ] = useState('document.getElementById("test").innerHTML += " test"')
 
-	const [isPaused, setIsPaused] = useState(false)
+	const [ isPaused, setIsPaused ] = useState(false)
 	const [ incomingHtml, setIncomingHtml ] = useState('<h1 id="test">test</h1>')
 	const [ incomingCss, setIncomingCss ] = useState('h1 { color : #333; }')
 	const [ incomingJs, setIncomingJs ] = useState('document.getElementById("test").innerHTML += " test"')
@@ -47,7 +48,6 @@ const Desk = props => {
 	const [ isCssTabOpen, setIsCssTabOpen ] = useState(false)
 	const [ isJsTabOpen, setIsJsTabOpen ] = useState(false)
 
-	const [ library, setLibrary ] = useState('react')
 	const [ srcDoc, setSrcDoc ] = useState('')
 	const [ miniBrowserCounter, setMinibrowserCounter ] = useState(0)
 	// video

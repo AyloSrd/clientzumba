@@ -73,12 +73,6 @@ iframe {
 } 
 
 #LessonName input {
-	flex-grow:  1;
-	border: none;
+	width: calc(var(--large-unit)*6);
 	margin: 0 var(--standard-unit) 0 var(--little-unit);
-	padding: calc(var(--little-unit)/2) var(--little-unit);
-	background: #e7e7e7;
-	box-shadow: inset 5px 5px 6px #999898, 
-				inset -5px -5px 6px #ffffff;
-	border-radius: 30px;
 } 

@@ -14,7 +14,6 @@ const Video = ({ call, stream }) => {
 	return(
 		<div className="Video">
           <video playsInline ref={classmateVideo} autoPlay/>
-			<p>{call.peer}</p>
         </div>
 	)
 }

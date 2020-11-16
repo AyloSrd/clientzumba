@@ -4,7 +4,7 @@ import 'codemirror/theme/material.css'
 import 'codemirror/mode/xml/xml'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
-import '../../styles/Editor.css'
+import './Editor.css'
 import { Controlled as ControlledEditor } from 'react-codemirror2'
 
 const Editor = props => {

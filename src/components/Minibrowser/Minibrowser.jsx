@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/Minibrowser.css'
+import './Minibrowser.css'
 
 const Minibrowser = props => {
 	const { 
@@ -26,6 +26,7 @@ const Minibrowser = props => {
 				>
 					<p className="text">Lesson :</p>
 					<input 
+						className="Input"
 						readOnly 
 						value={ lessonName } 
 					/>
