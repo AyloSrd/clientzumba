@@ -269,7 +269,7 @@ const Desk = props => {
 											() =>{
 												setIsPaused(prevPaused => !prevPaused)
 											}}
-											className={`NeuBtn ${isPaused ? 'Down' : ''}`}
+											className={`NeuBtn ${isPaused ? 'Down' : ''} IconBtn`}
 										>
 											<div className='iconContainer'>
 												<div 
@@ -284,7 +284,7 @@ const Desk = props => {
 										<button 
 											id="SaveBtn" 
 											onClick= {handleSave}
-											className="NeuBtn"
+											className="NeuBtn IconBtn"
 										>
 											<div className='iconContainer'>
 												<div 

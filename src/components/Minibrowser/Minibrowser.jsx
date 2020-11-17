@@ -20,6 +20,17 @@ const Minibrowser = props => {
 				className="Flex SpaceBetween AlignCenterContent"
 				id="BrowserHeader"
 			>	
+				<button 
+					className='NeuBtn IconBtn'
+					onClick={ handleClick }
+					id="RunBtn"
+				>
+					<div className='iconContainer'>
+						<div 
+							className='Run'>
+						</div>
+					</div>
+				</button>
 				<div 
 					className="Flex AlignCenterContent"
 					id="LessonName"
@@ -31,17 +42,6 @@ const Minibrowser = props => {
 						value={ lessonName } 
 					/>
 				</div>
-				<button 
-					className='NeuBtn'
-					onClick={ handleClick }
-					id="RunBtn"
-				>
-					<div className='iconContainer'>
-						<div 
-							className='Run'>
-						</div>
-					</div>
-				</button>
 			</div>
 			<div 
 				className="Card"

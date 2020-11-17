@@ -44,13 +44,6 @@ export default {
       .catch(errorHandler)
   },
 
-  getItems() {
-    return service
-      .get("/api/items")
-      .then((res) => res.data)
-      .catch(errorHandler)
-  },
-
   getStudentNotes(studentId) {
     return service
       .get(`/api/notes/all/${studentId}`)

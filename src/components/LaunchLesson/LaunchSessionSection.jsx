@@ -11,7 +11,7 @@ const LaunchSessionSection = props => {
 			<div>
 				<h2>Launch a new session</h2>
 			</div>
-			<div>
+			<div className="Flex">
 				{
 					languages.map( language => <LaunchLessonCard 
 							key={language} 

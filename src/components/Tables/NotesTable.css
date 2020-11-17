@@ -1,0 +1,49 @@
+button.
+
+div.Delete {
+	color: white;
+	position: absolute;
+	margin-left: 16px;
+	margin-top: -3px;
+	width: 9px;
+	height: 10px;
+	border-left: solid 1px white;
+	border-right: solid 1px white;
+	border-bottom: solid 1px white;
+	border-radius: 0 0 2px 2px;
+  }
+  
+  div.Delete:before {
+	content: '';
+	position: absolute;
+	left: -3px;
+	top: -2px;
+	width: 13px;
+	height: 1px;
+	background-color: white;
+  }
+  
+  div.Delete:after {
+	content: '';
+	position: absolute;
+	left: 1px;
+	top: -5px;
+	width: 4px;
+	height: 2px;
+	border-left: solid 1px white;
+	border-right: solid 1px white;
+	border-top: solid 1px white;
+	border-radius: 4px 4px 0 0;
+  }
+  
+  div.InnerDelete {
+	width: 3px;
+	height: 7px;
+	border-left: solid 1px white;
+	border-right: solid 1px white;
+  }
+
+  div#NotesTableContainer {
+	max-width: max-content;
+  }
+  

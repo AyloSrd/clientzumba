@@ -16,7 +16,7 @@
  
 div.Run {
 	position: absolute;
-	margin-left: -5px;
+	margin-left: 13px;
 	margin-top: -7px;
 	width: 15px;
 	height: 15px;
@@ -64,15 +64,14 @@ iframe {
 }
 
 #LessonName {
-	flex-grow:  1;
-	margin-left: var(--little-unit);
+	margin-right: var(--large-unit);
 }
 
 #LessonName p {
 	width: max-content;
+	margin-right: var(--little-unit);
 } 
 
 #LessonName input {
 	width: calc(var(--large-unit)*6);
-	margin: 0 var(--standard-unit) 0 var(--little-unit);
 } 

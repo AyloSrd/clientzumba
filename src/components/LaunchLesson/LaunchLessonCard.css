@@ -1,0 +1,22 @@
+div.LaunchLessonCard {
+	height: calc( var(--large-unit)*4);
+	width: calc( var(--large-unit)*4);
+	min-width: calc( var(--large-unit)*3);
+	min-height: calc( var(--large-unit)*3);
+	margin-right: var(--standard-unit);
+	margin-bottom: var(--standard-unit);
+}
+
+.ImgContainer {
+	height: calc( var(--large-unit)*2);
+	width: calc( var(--large-unit)*2);
+	border-radius: 50%;
+	overflow: hidden;
+	margin-bottom: var(--standard-unit);
+}
+
+.ImgContainer img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}

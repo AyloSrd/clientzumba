@@ -66,7 +66,6 @@
 	display: grid;
 	grid-template-columns: 4fr 5fr;
 	grid-template-rows: calc(100vh - 84px);
-	align-items: center;
 	grid-gap:var(--large-unit);
 	padding: 0 var(--large-unit);
 	height: calc(100vh - 84px);
@@ -94,6 +93,7 @@ div.Play {
 	color: white;
 	width: 15px;
 	height: 15px;
+	margin-left: 11px;
 	border-right: solid 2px white;
 	border-top: solid 2px white;
 	 -webkit-transform: rotate(45deg) translate(-2px, 2px);
@@ -115,6 +115,7 @@ div.Play {
 	color: white;
 	width: 12px;
 	height: 12px;
+	margin-left: 14px;
 	border-right: solid 2px white;
 	border-left: solid 2px white;
 	transition: 0.2s;
@@ -122,7 +123,7 @@ div.Play {
   
   div.Save {
 	position: absolute;
-	margin-left: -8px;
+	margin-left: 11px;
 	margin-top: 3px;
 	width: 18px;
 	height: 5px;
@@ -165,11 +166,12 @@ div.Play {
 }
   
 .panel {
-	height: 70vh;
+	height: 75vh;
 	max-height: 100%;
 	max-width: 100%;
 	display: flex;
 	flex-direction: column;
+	margin-top: calc(var(--large-unit)/2)
 }
 
   /*--------- EDITORS --------- */
