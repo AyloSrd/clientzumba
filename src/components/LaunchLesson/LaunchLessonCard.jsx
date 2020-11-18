@@ -1,5 +1,6 @@
 import React from 'react'
 import { LaunchSessionFunction } from './LaunchSessionFunction'
+import { presetCode } from '../../data/libraries'
 import './LaunchLessonCard.css'
 
 const LaunchLessonCard = ({ props, language, uuidv4 }) => {
@@ -11,7 +12,11 @@ const LaunchLessonCard = ({ props, language, uuidv4 }) => {
 			</div>
 			<button
 				className="NeuBtn LaunchLessonBtn"
-				onClick={() => LaunchSessionFunction(props, {room:`${language}-lesson-${uuidv4()}`}, '/desk')}
+				onClick={() => LaunchSessionFunction(props, { 
+						room:`${language}-lesson-${uuidv4()}`, 
+						code: presetCode[language] 
+					}, '/desk')
+				}
 			>
 				Launch lesson
 			</button>

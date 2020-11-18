@@ -1,6 +1,9 @@
-export const LaunchSessionFunction = ( { props }, { room }, goTo ) => {
+export const LaunchSessionFunction = ( { props }, { room, code }, goTo ) => {
 	props.history.push({
 		pathname: goTo,
-		state: { room }
+		state: { 
+			room,
+			code 
+		}
 	})
 }

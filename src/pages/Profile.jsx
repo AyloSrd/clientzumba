@@ -11,7 +11,7 @@ const Profile = props => {
       <h1>Protected profile</h1>
       <LaunchLessonSection props={props} />
       <JoinLesson props={props} />
-      <NotesTable id={props.context.user._id}/>
+      <NotesTable props={props} />
     </div> 
   );
 };

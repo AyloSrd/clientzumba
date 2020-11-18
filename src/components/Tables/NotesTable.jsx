@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Table from './Table'
 import apiHandler from '../../api/apiHandler'
+import { LaunchSessionFunction } from '../LaunchLesson/LaunchSessionFunction'
 import './NotesTable.css'
 
-const NotesTable = ({ id }) => {
-	console.log('id', id)
+const NotesTable = ({ props }) => {
+	const id = props.context.user._id
+	console.log('props', props)
 	const [ notes, setNotes] = useState('')
 
 	const handleDelete = id => {
@@ -18,6 +20,15 @@ const NotesTable = ({ id }) => {
 					return newNotes
 				})
 			})
+	}
+
+	const handleOpen = ( room, html, css, js ) => {	
+		const code = {
+			html, 
+			css,
+			js
+		}
+		LaunchSessionFunction( { props }, { room, code}, '/desk')
 	}
 
 	useEffect(() => {
@@ -44,7 +55,7 @@ const NotesTable = ({ id }) => {
 					</thead>
 					<tbody>
 						{
-							notes 
+							notes[0] 
 								? notes.map(note => {
 									return(
 										<tr key={note._id}>
@@ -55,8 +66,18 @@ const NotesTable = ({ id }) => {
 												{note.updated}
 											</td>
 											<td>
-												<button 
+												<button
 													className="NeuBtn IconBtn"
+													id="GoToBtn" 
+													onClick={() => handleOpen(note.lesson, note.html, note.css, note.js )}
+												>
+													O
+												</button>
+											</td>
+											<td>
+												<button
+													className="NeuBtn IconBtn"
+													id="DeleteBtn" 
 													onClick={() => handleDelete(note._id)}
 												>
 													<div className="Delete Flex CenteredVHContent">
@@ -70,9 +91,15 @@ const NotesTable = ({ id }) => {
 								: <tr>
 									<td 
 										className="text" 
-										colSpan="3"
+										colSpan="5"
 									>
 										You haven't coded yet
+									</td>
+									<td>
+										    
+									</td>
+									<td>
+										    
 									</td>
 								</tr> 
 						}

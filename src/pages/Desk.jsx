@@ -24,7 +24,7 @@ import apiHandler from '../api/apiHandler'
 import '../styles/Desk.css'
 
 const Desk = props => {
-	console.log(props)
+	console.log('props', props)
 
 	const { 
 		userName, 
@@ -32,17 +32,17 @@ const Desk = props => {
 		_id : userId
 	} = props.context.user
 
-	const room = props.location.state.room
+	const { room, code: firstCode }= props.location.state
 	const [ library, typeOfSession  ] = room.split('-')
 	
-	const [ html, setHtml ] = useState('<h1 id="test">test</h1>')
-	const [ css, setCss ] = useState('h1 { color : #333; }')
-	const [ js, setJs ] = useState('document.getElementById("test").innerHTML += " test"')
+	const [ html, setHtml ] = useState(firstCode.html)
+	const [ css, setCss ] = useState(firstCode.css)
+	const [ js, setJs ] = useState(firstCode.js)
 
 	const [ isPaused, setIsPaused ] = useState(false)
-	const [ incomingHtml, setIncomingHtml ] = useState('<h1 id="test">test</h1>')
-	const [ incomingCss, setIncomingCss ] = useState('h1 { color : #333; }')
-	const [ incomingJs, setIncomingJs ] = useState('document.getElementById("test").innerHTML += " test"')
+	const [ incomingHtml, setIncomingHtml ] = useState(firstCode.html)
+	const [ incomingCss, setIncomingCss ] = useState(firstCode.css)
+	const [ incomingJs, setIncomingJs ] = useState(firstCode.js)
 
 	const [ isHtmlTabOpen, setIsHtmlTabOpen ] = useState(true)
 	const [ isCssTabOpen, setIsCssTabOpen ] = useState(false)

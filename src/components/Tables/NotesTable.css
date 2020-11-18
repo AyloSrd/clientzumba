@@ -1,6 +1,10 @@
-button.
+/*table*/
+div#NotesTableContainer {
+	max-width: max-content;
+}
 
-div.Delete {
+ /* delete*/
+button div.Delete {
 	color: white;
 	position: absolute;
 	margin-left: 16px;
@@ -11,9 +15,10 @@ div.Delete {
 	border-right: solid 1px white;
 	border-bottom: solid 1px white;
 	border-radius: 0 0 2px 2px;
-  }
+	transition: 0.2s ease-in;
+}
   
-  div.Delete:before {
+button div.Delete:before {
 	content: '';
 	position: absolute;
 	left: -3px;
@@ -21,9 +26,10 @@ div.Delete {
 	width: 13px;
 	height: 1px;
 	background-color: white;
-  }
+	transition: 0.2s ease-in;
+}
   
-  div.Delete:after {
+button div.Delete:after {
 	content: '';
 	position: absolute;
 	left: 1px;
@@ -34,16 +40,34 @@ div.Delete {
 	border-right: solid 1px white;
 	border-top: solid 1px white;
 	border-radius: 4px 4px 0 0;
-  }
+	transition: 0.2s ease-in;
+}
   
-  div.InnerDelete {
+button div.InnerDelete {
 	width: 3px;
 	height: 7px;
 	border-left: solid 1px white;
 	border-right: solid 1px white;
-  }
+	transition: 0.2s ease-in;
+}
 
-  div#NotesTableContainer {
-	max-width: max-content;
-  }
+/*delete hover*/
+/* #DeleteBtn:hover {
+	background: linear-gradient(145deg, #e64b65, #ff5978);
+} */
+
+button:hover div.Delete {
+	margin-top: -2px;
+	transition: 0.2s ease-in;
+}
+  
+button:hover div.Delete:before {
+	top: -5px;
+	transition: 0.2s ease-in;
+}
+  
+button:hover div.Delete:after {
+	top: -8px;
+	transition: 0.2s ease-in;
+}
   
