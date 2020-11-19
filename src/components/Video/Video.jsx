@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { streamCall } from './VideoLogic'
 
-const Video = ({ call, stream }) => {
+const Video = ({ call, stream, teacher }) => {
 	const classmateVideo = useRef()
 
 	useEffect(() => {
@@ -10,9 +10,8 @@ const Video = ({ call, stream }) => {
 		return () => call.close()
 	}, [])
 
-
 	return(
-		<div className="Video">
+		<div className={`Video ${call.peer === teacher && 'BigVideo'}`}>
           <video playsInline ref={classmateVideo} autoPlay/>
         </div>
 	)

@@ -4,17 +4,17 @@ import JoinLesson from '../components/LaunchLesson/JoinLesson'
 import NotesTable from '../components/Tables/NotesTable'
 import LessonsTable from '../components/Tables/LessonsTable'
 import { withUser } from '../components/Auth/withUser'
+import '../styles/Profile.css'
 
 const Profile = props => {
-  console.log('profile', props)
   return (
     <div>
-      <h1>Protected profile</h1>
-      {/* { props.context.user.role === 'student' && <LaunchLessonSection props={props} />} */}
-      <LaunchLessonSection props={props} />
+      <h1 className="text">Welcome back, <span id="userName">{props.context.user.userName}</span>!</h1>
+      { props.context.user.role === 'teacher' && <LaunchLessonSection props={props} />}
+      {/* <LaunchLessonSection props={props} /> */}
       <JoinLesson props={props} />
-      {/* { props.context.user.role === 'student' && <NotesTable props={props} />} */}
-      <NotesTable props={props} />
+      { props.context.user.role === 'student' && <NotesTable props={props} />}
+      {/* <NotesTable props={props} /> */}
       <LessonsTable props={props} />
     </div> 
   );

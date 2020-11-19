@@ -4,8 +4,12 @@ let socket
 
 export const initiateSocket = (room, userId, role) => {
 	socket = io(process.env.REACT_APP_BACKEND_URL)
-	console.log('connecting socket')
 	if (socket && room) socket.emit('join', room, userId, role)
+}
+
+export const getTeachersPeerId = setTeacher => {
+	if (!socket) return(true)
+	socket.on('teacher is', teachersPeerId => setTeacher(teachersPeerId))
 }
 
 export const getIsConnected = setSocketConnected => {

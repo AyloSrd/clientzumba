@@ -16,7 +16,8 @@ import {
 	getActiveTab,
 	sendCallMeRequest,
 	callPeer,
-	removeClosedCall 
+	removeClosedCall,
+	getTeachersPeerId 
 } from '../socket/socket'
 import Peer from 'peerjs'
 import { withUser } from '../components/Auth/withUser'
@@ -173,6 +174,7 @@ const Desk = props => {
 			setIncomingJs(code.js)
 		})
 		getIsConnected(setSocketConnected)
+		getTeachersPeerId(setTeacher)
 		getRunMinibrowser(setMinibrowserCounter, miniBrowserCounter)
 		getActiveTab(setIsHtmlTabOpen, setIsCssTabOpen, setIsJsTabOpen)
 

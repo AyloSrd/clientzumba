@@ -49,3 +49,16 @@ ReactDOM.render(<App welcome=" welcome to your React lesson!" />, document.getEl
 instead of babel, this is lighter but doesn't recognise closing tag without space, eg => <App/> NO, <App /> YES
 <script src="https://cdn.jsdelivr.net/npm/dataformsjs@4.8.0/js/react/jsxLoader.min.js"></script>
 */ 
+
+/*
+d3 script
+d3: '<script src="https://d3js.org/d3.v5.min.js"></script>',
+*/
+
+/*
+Typescript: https://github.com/basarat/typescript-script 
+*/
+
+/* 
+Bootstrap 
+*/
