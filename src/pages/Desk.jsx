@@ -52,8 +52,8 @@ const Desk = props => {
 	const [ miniBrowserCounter, setMinibrowserCounter ] = useState(0)
 	// video
 	const userVideo = useRef()
-	// const classmateVideo = useRef()
 	const [ stream, setStream ] = useState()
+	const [ teacher, setTeacher] = useState()
 	
 	//peer
 	const [ myPeer, setMyPeer] = useState('')
@@ -195,6 +195,7 @@ const Desk = props => {
 		removeClosedCall(setCalls)
 
 		return disconnectSocket
+
 	}, [])
 	
 	useEffect(() => {
@@ -237,10 +238,10 @@ const Desk = props => {
 			>
 				<div className="panel">
 					<div 
-						className="Flex SpaceBetween BgPrimary"
+						className="Flex AlignCenterContent SpaceBetween BgPrimary"
 						id="Tab"	
 					>
-						<div className="Flex">
+						<div className="AlignCenterContent Flex">
 							<button 
 								name="htmlTab" 
 								className={`NeuBtn ${ isHtmlTabOpen ? 'Down' : '' }`} 
@@ -332,7 +333,7 @@ const Desk = props => {
 						<h2>{peerId}</h2>
 					</div>
 					{
-						calls.map((call, index) => <Video key={index} call={call} stream={stream} />)
+						calls.map((call, index) => <Video key={index} call={call} stream={stream} teacher={teacher} />)
 					}
 				</div>
 			</div>

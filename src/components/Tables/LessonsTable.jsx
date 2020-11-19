@@ -4,20 +4,20 @@ import apiHandler from '../../api/apiHandler'
 import { LaunchSessionFunction } from '../LaunchLesson/LaunchSessionFunction'
 import './NotesTable.css'
 
-const NotesTable = ({ props }) => {
-	const id = props.context.user._id
+const LessonsTable = ({ props }) => {
+	const { _id:id, role } = props.context.user
 	console.log('props', props)
-	const [ notes, setNotes] = useState('')
+	const [ lessons, setLessons] = useState('')
 
 	const handleDelete = id => {
 		console.log('id', id)
 		apiHandler
-			.deleteNote(id)
-			.then(noteId => {
-				console.log(noteId)
-				setNotes(prevNotes => {
-					const newNotes = prevNotes.filter(prevNote => prevNote._id !== noteId)
-					return newNotes
+			.deleteLesson(id)
+			.then(lessonId => {
+				console.log(lessonId)
+				setLessons(prevLessons => {
+					const newLessons = prevLessons.filter(prevLesson => prevLesson._id !== lessonId)
+					return newLessons
 				})
 			})
 	}
@@ -33,58 +33,67 @@ const NotesTable = ({ props }) => {
 
 	useEffect(() => {
 		apiHandler
-			.getStudentNotes(id)
-			.then( data => setNotes(data))
-			.catch(err => console.error('student notes', err))
+			.getStudentLessons(id)
+			.then( data => setLessons(data))
+			.catch(err => console.error('student lessons', err))
 	}, [])
-	console.log(notes)
+
+	console.log(lessons)
 	return (
 		<div 
 			className="Flex Column AlignCenterContent">
-			<h1 className="text">Your notes</h1>
+			<h1 className="text">Your lessons</h1>
 			<div 
 				className="InsetCard TableContainer"
-				id="NotesTableContainer"
+				id="LessonsTableContainer"
 			>
 				<table>
 					<thead>
 						<tr>
 							<th className="text">Topic</th>
+							<th className="text">Teacher</th>
 							<th className="text">Date</th>
 						</tr>
 					</thead>
 					<tbody>
 						{
-							notes[0] 
-								? notes.map(note => {
+							lessons[0] 
+								? lessons.map(lesson => {
 									return(
-										<tr key={note._id}>
+										<tr key={lesson._id}>
 											<td className="text" >
-												{note.library}
+												{lesson.library}
 											</td>
 											<td className="text" >
-												{note.updated}
+												{lesson.teacher.userName}
+											</td>
+											<td className="text" >
+												{lesson.updated}
 											</td>
 											<td>
 												<button
 													className="NeuBtn IconBtn"
 													id="GoToBtn" 
-													onClick={() => handleOpen(note.lesson, note.html, note.css, note.js )}
+													onClick={() => handleOpen(lesson.lesson, lesson.html, lesson.css, lesson.js )}
 												>
 													<div className="Code"></div>
 												</button>
 											</td>
-											<td>
-												<button
-													className="NeuBtn IconBtn"
-													id="DeleteBtn" 
-													onClick={() => handleDelete(note._id)}
-												>
-													<div className="Delete Flex CenteredVHContent">
-														<div className="InnerDelete"></div>
-													</div>
-												</button>
-											</td>
+											{
+												role === 'teacher' && (											
+													<td>
+														<button
+															className="NeuBtn IconBtn"
+															id="DeleteBtn" 
+															onClick={() => handleDelete(lesson._id)}
+														>
+															<div className="Delete Flex CenteredVHContent">
+																<div className="InnerDelete"></div>
+															</div>
+														</button>
+													</td>
+												)
+											}
 										</tr>
 									)
 								})
@@ -113,4 +122,5 @@ const NotesTable = ({ props }) => {
 	)
 }
 
-export default NotesTable
+export default LessonsTable
+

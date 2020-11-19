@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 import { LaunchSessionFunction } from './LaunchSessionFunction'
-import { presetCode } from '../../data/libraries'
+import { templateCode } from '../../data/libraries'
 import './JoinLesson.css'
 
 const JoinLessonSection = props => {
@@ -8,7 +8,7 @@ const JoinLessonSection = props => {
 	const handleOnSubmit = e => {
 		const language = room.split('-')[0]
 		e.preventDefault()
-		LaunchSessionFunction(props, { room, code: presetCode[language] }, '/desk')
+		LaunchSessionFunction(props, { room, code: templateCode[language] }, '/desk')
 	}
 	return (
 		<div className="Flex CenteredVHContent">

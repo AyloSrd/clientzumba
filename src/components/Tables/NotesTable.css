@@ -3,6 +3,10 @@ div#NotesTableContainer {
 	max-width: max-content;
 }
 
+div#LessonsTableContainer {
+	max-width: max-content;
+}
+
  /* delete*/
 button div.Delete {
 	color: white;
@@ -70,4 +74,42 @@ button:hover div.Delete:after {
 	top: -8px;
 	transition: 0.2s ease-in;
 }
+
+button div.Code {
+	color: white;
+	position: absolute;
+	margin: -3px 13px;
+}
+ 
+button div.Code:before {
+	content: '';
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	border-left: solid 1px white;
+	border-top: solid 1px white;
+	-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+}
+  
+button div.Code:after {
+	content: '';
+	position: absolute;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-bottom: solid 1px white;
+	border-right: solid 1px white;
+	-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+}
+
+button:hover div.Code:before {
+	left: -2px;
+}
+
+button:hover div.Code:after {
+	left: 8px;
+}
+  
   

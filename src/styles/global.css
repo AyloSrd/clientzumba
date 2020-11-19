@@ -99,8 +99,9 @@ button {
 button.NeuBtn, input.NeuBtn {
   cursor: pointer;
   width: auto;
+  height: 30px;
   color: white;
-  padding: var(--little-unit) var(--standard-unit);
+  padding: 0 var(--standard-unit);
   border: none;
   border-radius: var(--little-unit);
   background: linear-gradient(145deg, #2a363c, #232d32);
