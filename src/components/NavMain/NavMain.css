@@ -1,9 +1,7 @@
 .NavMain {
   background-color: transparent;
   color: white;
-  display: flex;
-  align-items: center;
-  padding: 20px;
+  padding: 0px var(--large-unit);
   height: 70px;
 }
 

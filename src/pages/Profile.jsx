@@ -3,9 +3,10 @@ import LaunchLessonSection from '../components/LaunchLesson/LaunchSessionSection
 import JoinLesson from '../components/LaunchLesson/JoinLesson'
 import NotesTable from '../components/Tables/NotesTable'
 import LessonsTable from '../components/Tables/LessonsTable'
+
 import { withUser } from '../components/Auth/withUser'
 import '../styles/Profile.css'
-
+import FooterMain from '../components/FooterMain/FooterMain'
 const Profile = props => {
   return (
     <div>
@@ -16,6 +17,7 @@ const Profile = props => {
       { props.context.user.role === 'student' && <NotesTable props={props} />}
       {/* <NotesTable props={props} /> */}
       <LessonsTable props={props} />
+      <FooterMain />
     </div> 
   );
 };

@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 :root {
   --primary: #273238;
@@ -39,7 +40,7 @@
 
 html {
   font-size: 12px;
-  font-family: "Manrope", sans-serif;
+  font-family: 'Ubuntu', serif;
 }
 
 body {
@@ -48,6 +49,22 @@ body {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 3rem;
 }
 
 a {
@@ -121,8 +138,10 @@ button.NeuBtn:hover, input.NeuBtn:hover {
 }
 
 button.NeuBtn:active, button.NeuBtn.Down, input.NeuBtn:active, input.NeuBtn.Down {
-  background: var(--secondary);
-  box-shadow: inset 5px 5px 10px #133242, 
+  background: linear-gradient(145deg, #29688b, #307ca5);
+  box-shadow: 3px 3px 5px #111618, 
+              -3px -3px 5px #3d4f58,
+              inset 5px 5px 10px #133242, 
               inset -5px -5px 10px #47b6f2;
   transition: 0.5s;
   transition-timing-function: ease-out;
@@ -167,8 +186,7 @@ div.InsetCard, form.InsetCard, input.InsetCard {
 }
 
 .text {
-  color: white;
-  text-shadow: 1px 1px 0  #101416;
+  color: rgb(235, 235, 235);
 }
 
 .Input {

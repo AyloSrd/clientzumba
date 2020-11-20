@@ -7,10 +7,10 @@
 
 #BrowserHeader {
 	margin-bottom: 30px;
+	height: 40px;
 }
 
 #RunBtn {
-	height: 38px;
 	position: relative;
 }
  
@@ -48,7 +48,7 @@ div.Run {
   }
 
   #IframeContainer {
-	padding: var(--little-unit);
+	/* padding: 0 0 var(--standard-unit) 0; */
 	height: 100%;
 	max-height: 100%;
 	max-width: 100%;
@@ -61,6 +61,8 @@ iframe {
 	max-height: 100%;
 	max-width: 100%;
 	background-color: white;
+	border-radius: var(--little-unit);
+	box-shadow: rgba(10, 37, 64, 0.35) 0px 0px 11px 0px inset;
 }
 
 #LessonName {

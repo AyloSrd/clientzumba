@@ -1,6 +1,6 @@
 import React from "react"
 import { Switch, Route } from "react-router-dom"
-import NavMain from "./components/NavMain"
+import NavMain from "./components/NavMain/NavMain"
 import Home from "./pages/Home"
 import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"

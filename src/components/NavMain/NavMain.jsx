@@ -1,9 +1,9 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import { withUser } from "../components/Auth/withUser"
-import apiHandler from "../api/apiHandler"
+import { withUser } from "../Auth/withUser"
+import apiHandler from "../../api/apiHandler"
 
-import "../styles/NavMain.css"
+import "./NavMain.css"
 
 const NavMain = props => {
   const { context } = props
@@ -20,9 +20,9 @@ const NavMain = props => {
   }
 
   return (
-    <nav className="NavMain">
+    <nav className="NavMain Flex AlignCenterContent">
       <NavLink exact to="/">
-        <h3 className="logo">App name</h3>
+        <p className="logo text">App name</p>
       </NavLink>
       <ul className="nav-list">
         {context.isLoggedIn && (
