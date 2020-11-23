@@ -40,11 +40,11 @@ const NavMain = props => {
         {!context.isLoggedIn && (
           <React.Fragment>
             <li className="Flex CenteredVHContent">
-              <NavLink to="/signin">Log in</NavLink>
+              <NavLink to="/signin">Sign in</NavLink>
             </li>
             <li className="Flex CenteredVHContent">
               <div className="NeuBtn Flex CenteredVHContent">
-                <NavLink to="/signup">Create account</NavLink>
+                <NavLink to="/signup">Sign up</NavLink>
               </div>
             </li>
           </React.Fragment>
