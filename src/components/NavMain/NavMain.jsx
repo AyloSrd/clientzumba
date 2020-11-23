@@ -22,28 +22,30 @@ const NavMain = props => {
   return (
     <nav className="NavMain Flex AlignCenterContent">
       <NavLink exact to="/">
-        <p className="logo text">App name</p>
+        <h3 className="logo text">C<span id="logoO">ö</span>de</h3>
       </NavLink>
       <ul className="nav-list">
         {context.isLoggedIn && (
           <React.Fragment>           
-            <li>
+            <li className="Flex CenteredVHContent">
               <NavLink to="/profile">
                 {context.user && context.user.userName}
               </NavLink>
             </li>
-            <li>
+            <li className="Flex CenteredVHContent">
               <p onClick={handleLogout}>Logout</p>
             </li>
           </React.Fragment>
         )}
         {!context.isLoggedIn && (
           <React.Fragment>
-            <li>
+            <li className="Flex CenteredVHContent">
               <NavLink to="/signin">Log in</NavLink>
             </li>
-            <li>
-              <NavLink to="/signup">Create account</NavLink>
+            <li className="Flex CenteredVHContent">
+              <div className="NeuBtn Flex CenteredVHContent">
+                <NavLink to="/signup">Create account</NavLink>
+              </div>
             </li>
           </React.Fragment>
         )}

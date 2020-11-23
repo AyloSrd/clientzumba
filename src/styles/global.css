@@ -6,7 +6,9 @@
   --primary-light: #3d4f58;
   --primary-dark:#111618;
   --secondary:#2d749a;
-  --secondary-light: #47b6f2;;
+  --secondary-light: #47b6f2;
+  --text-light: #ebebeb;
+  --text-dark: #333;
   --standard-unit: 2rem;
   --little-unit: 1rem;
   --large-unit: 5rem;
@@ -45,7 +47,8 @@ html {
 
 body {
 	margin: 0;
-	background-color: var(--primary);
+  background-color: var(--primary);
+  color: var(--text-light);
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -64,7 +67,7 @@ h2 {
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 a {
@@ -113,7 +116,15 @@ button {
   justify-content: space-between;
 }
 
-button.NeuBtn, input.NeuBtn {
+.FlexStart {
+  align-items: flex-start;
+}
+
+.Marginless {
+  margin: 0;
+}
+
+button.NeuBtn, input.NeuBtn, div.NeuBtn {
   cursor: pointer;
   width: auto;
   height: 30px;
@@ -128,7 +139,7 @@ button.NeuBtn, input.NeuBtn {
   transition-timing-function: ease-out;    
 }
 
-button.NeuBtn:hover, input.NeuBtn:hover {
+button.NeuBtn:hover, input.NeuBtn:hover, div.NeuBtn:hover {
   color:var(--secondary-light);
   background: linear-gradient(145deg, #232d32, #2a363c);
   box-shadow:  3px 3px 5px #111618, 
@@ -137,7 +148,7 @@ button.NeuBtn:hover, input.NeuBtn:hover {
   transition-timing-function: ease-out;
 }
 
-button.NeuBtn:active, button.NeuBtn.Down, input.NeuBtn:active, input.NeuBtn.Down {
+button.NeuBtn:active, button.NeuBtn.Down, input.NeuBtn:active, input.NeuBtn.Down, div.NeuBtn.Down {
   background: linear-gradient(145deg, #29688b, #307ca5);
   box-shadow: 3px 3px 5px #111618, 
               -3px -3px 5px #3d4f58,
@@ -156,7 +167,7 @@ button.NeuBtn:active, button.NeuBtn.Down, input.NeuBtn:active, input.NeuBtn.Down
   transition-timing-function: ease-out;
 } */
 
-button.NeuBtn.Down:hover, input.NeuBtn.Down:hover {
+button.NeuBtn.Down:hover, input.NeuBtn.Down:hover, div.NeuBtn.Down:hover {
   color: white; 
   transition: 0.5s;
   transition-timing-function: ease-out;
@@ -173,20 +184,20 @@ button.IconBtn, input.IconBtn {
   padding: 0;
 }
 
-div.Card, form.Card {
+div.Card, form.Card, article.Card {
   border-radius: var(--little-unit);
   box-shadow:  7px 7px 14px #101416, 
              -7px -7px 14px #3e505a;
 }
 
-div.InsetCard, form.InsetCard, input.InsetCard { 
+div.InsetCard, form.InsetCard, input.InsetCard, article.InsetCard { 
   border-radius: var(--little-unit);
   box-shadow: inset 7px 7px 14px#101416, 
             inset -7px -7px 14px #3d4f58;
 }
 
 .text {
-  color: rgb(235, 235, 235);
+  color: #ebebeb;
 }
 
 .Input {

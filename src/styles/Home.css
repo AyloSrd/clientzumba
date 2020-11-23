@@ -6,6 +6,151 @@ header {
 }
 
 #TitleHeader {
-	width: 65vw;
-	height: 33vw;
+	margin-bottom: var(--standard-unit);
 }
+
+#description {
+	font-size: 2rem;
+	width: 60vw;
+}
+
+/*Section 2*/
+
+#valueProposition {
+	width: 100vw;
+	max-width: 100%;	
+	padding: var(--large-unit)
+}
+
+#valueProposition article {
+	min-width: 200px;
+	max-width: 300px;
+	position: relative;
+	margin-right: var(--large-unit);
+}
+
+#valueProposition article:last-of-type {
+	margin-right: 0;
+}
+
+#valueProposition h3 {
+	margin: var(--standard-unit) var(--little-unit) 0;
+}
+
+#valueProposition p {
+	font-size: 1.3rem;
+}
+
+div.iconBig {
+	height: 100px;
+	width: 100px;
+	border-radius: 50% !important;
+	margin: 0 auto;
+}
+
+.Join {
+	color: white;
+	position: absolute;
+	margin-left: 28px;
+	margin-top: 28px;
+	width: 45px;
+	height: 45px;
+	border: solid 3px white;
+	border-radius: 5px;
+	-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+}
+  
+.Join:before {
+	content: '';
+	position: absolute;
+	top: 25px;
+	left: 9px;
+	width: 21px;
+	height: 30px;
+	background-color: white;
+	border-left: solid 9px var(--primary);
+	border-right: solid 9px var(--primary);
+}
+  
+.Join:after {
+	content: '';
+	position: absolute;
+	top: 20px;
+	left: 12px;
+	width: 15px;
+	height: 15px;
+	border-top: solid 3px white;
+	border-right: solid 3px white;
+	-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+}
+
+.Learn {
+	color: white;
+	position: relative;
+	margin-left: 25px;
+	margin-top: 35px;
+  }
+  
+  .Learn:before {
+	content: '';
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	border-left: solid 3px white;
+	border-top: solid 3px white;
+	-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+  }
+  
+  .Learn:after {
+	content: '';
+	position: absolute;
+	left: 20px;
+	width: 30px;
+	height: 30px;
+	border-bottom: solid 3px white;
+	border-right: solid 3px white;
+	-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+  }
+  
+  .Relearn {
+	color: white;
+	position: absolute;
+	margin-left: 25px;
+	margin-top: 31px;
+	width: 50px;
+	height: 38px;
+	border-radius: 5px;
+	border: solid 3px white;
+  }
+  
+  .Relearn:before {
+	content: '';
+	position: absolute;
+	left: -9px;
+	top: -3px;
+	width: 0;
+	height: 0;
+	border-top: solid 7px var(--primary);
+	border-bottom: solid 7px white;
+	border-left: solid 7px var(--primary);
+	border-right: solid 7px var(--primary);
+  }
+  
+  .Relearn:after {
+	content: '';
+	position: absolute;
+	right: -8px;
+	bottom: -3px;
+	width: 0;
+	height: 0;
+	border-top: solid 7px currentColor;
+	border-bottom: solid 7px var(--primary);
+	border-left: solid 7px var(--primary);
+	border-right: solid 7px var(--primary);
+  }
+  
+  

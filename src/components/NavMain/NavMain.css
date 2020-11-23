@@ -13,3 +13,8 @@
 .NavMain .nav-list li:not(:last-child) {
   margin-right: 20px;
 }
+
+#logoO {
+  color: var(--secondary-light);
+}
+

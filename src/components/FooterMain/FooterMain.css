@@ -1,0 +1,3 @@
+.FooterMain {
+	height: calc(var(--large-unit)*2);
+}

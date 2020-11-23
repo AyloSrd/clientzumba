@@ -1,10 +1,11 @@
 import React from 'react'
+import './FooterMain.css'
 
 const FooterMain = () => {
 
 	return (
-		<footer>
-			Footer
+		<footer className="FooterMain Flex CenteredVHContent">
+			<p className="CenteredText">Made by Aÿlo</p>
 		</footer>
 	)
 }
