@@ -58,7 +58,11 @@ class FormSignup extends Component {
           </p>
         </div>
 
-        <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        <form 
+          className="Flex Column AlignCenterContent InsetCard"
+          onChange={this.handleChange} 
+          onSubmit={this.handleSubmit}
+        >
         <label htmlFor='userName'>User name</label>
           <input 
           type='text' 

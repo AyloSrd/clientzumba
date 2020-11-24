@@ -28,9 +28,13 @@ const NavMain = props => {
         {context.isLoggedIn && (
           <React.Fragment>           
             <li className="Flex CenteredVHContent">
-              <NavLink to="/profile">
-                {context.user && context.user.userName}
-              </NavLink>
+            <li className="Flex CenteredVHContent">
+              <div className="NeuBtn Flex CenteredVHContent">
+                <NavLink to="/profile">
+                  {context.user && context.user.userName}
+                </NavLink>
+              </div>
+            </li>
             </li>
             <li className="Flex CenteredVHContent">
               <p onClick={handleLogout}>Logout</p>

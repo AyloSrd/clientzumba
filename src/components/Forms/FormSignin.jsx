@@ -42,7 +42,11 @@ class FormSignin extends Component {
 
   render() {
     return (
-      <form onChange={ this.handleChange } onSubmit={ this.handleSubmit }>
+      <form 
+      className="Flex Column AlignCenterContent InsetCard"
+        onChange={ this.handleChange } 
+        onSubmit={ this.handleSubmit }
+      >
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" />
         <label htmlFor="password">Password</label>
