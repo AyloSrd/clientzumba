@@ -29,11 +29,11 @@ const NavMain = props => {
           <React.Fragment>           
             <li className="Flex CenteredVHContent">
             <li className="Flex CenteredVHContent">
-              <div className="NeuBtn Flex CenteredVHContent">
-                <NavLink to="/profile">
-                  {context.user && context.user.userName}
+                <NavLink to="/profile">                 
+                  <div className="NeuBtn Flex CenteredVHContent CTA">
+                    <p>{context.user && context.user.userName}</p>
+                    </div>
                 </NavLink>
-              </div>
             </li>
             </li>
             <li className="Flex CenteredVHContent">
@@ -47,9 +47,11 @@ const NavMain = props => {
               <NavLink to="/signin">Sign in</NavLink>
             </li>
             <li className="Flex CenteredVHContent">
-              <div className="NeuBtn Flex CenteredVHContent">
-                <NavLink to="/signup">Sign up</NavLink>
-              </div>
+              <NavLink to="/signup">
+                <div className="NeuBtn CTA Flex CenteredVHContent">
+                  <p>Sign up</p>
+                </div>
+              </NavLink>
             </li>
           </React.Fragment>
         )}

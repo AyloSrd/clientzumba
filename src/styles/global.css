@@ -184,7 +184,7 @@ button.IconBtn, input.IconBtn {
   padding: 0;
 }
 
-div.Card, form.Card, article.Card {
+div.Card, form.Card, article.Card, select.Card {
   border-radius: var(--little-unit);
   box-shadow:  7px 7px 14px #101416, 
              -7px -7px 14px #3e505a;
@@ -237,4 +237,17 @@ div.TableContainer td, div.TableContainer th {
 div.TableContainer tr:last-child, div.TableContainer td:last-child {
   padding: var(--little-unit);
   border: none;
+}
+
+button.CTA, div.CTA {
+	font-weight: 700;
+	background-color: var(--secondary);
+	background: linear-gradient(145deg, #307ca5, #29688b);
+	transition: 0.2s ease-in;
+}
+
+button.CTA:hover, div.CTA:hover {
+	color: white;
+	background: linear-gradient(145deg, #29688b, #307ca5);
+	transition: 0.2s ease-in;
 }

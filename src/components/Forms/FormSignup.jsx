@@ -2,6 +2,7 @@ import React, { Component, createRef } from "react"
 import { withRouter } from "react-router-dom"
 import { UserContext } from "../Auth/UserContext"
 import apiHandler from "../../api/apiHandler"
+import './Form.css'
 
 class FormSignup extends Component {
   static contextType = UserContext
@@ -50,6 +51,7 @@ class FormSignup extends Component {
         <div 
           ref={this.alertText} 
           style={{display:"none"}}
+          className="Card"
         >
           <p>
             This email is already taken !
@@ -59,45 +61,51 @@ class FormSignup extends Component {
         </div>
 
         <form 
-          className="Flex Column AlignCenterContent InsetCard"
+          className="Flex Column AlignCenterContent InsetCard Form"
           onChange={this.handleChange} 
           onSubmit={this.handleSubmit}
         >
         <label htmlFor='userName'>User name</label>
           <input 
-          type='text' 
-          id='userName' 
-          name='userName'
-          onChange={this.handleChange}
+            className="Input"
+            type='text' 
+            id='userName' 
+            name='userName'
+            onChange={this.handleChange}
           />
 
           <label htmlFor='email'>Email</label>
-          <input 
-          type='email' 
-          id='email' 
-          name='email'
-          onChange={this.handleChange}
+          <input
+            className="Input" 
+            type='email' 
+            id='email' 
+            name='email'
+            onChange={this.handleChange}
           />
           
           <label htmlFor='password'>Password</label>
           <input 
-          type='password' 
-          id='password' 
-          name='password'
-          onChange={this.handleChange}
+            className="Input"
+            type='password' 
+            id='password' 
+            name='password'
+            onChange={this.handleChange}
           />
           
-          <label htmlFor='pet-select'>I am a ...</label>
-          <select 
-          name='role' 
-          value={this.state.role}
-          onChange={this.handleChange}
-          >
-            <option value=''>--Please choose an option--</option>
-            <option value='student'>Student</option>
-            <option value='teacher'>Teacher</option>
-          </select>
-          <button>Submit</button>
+          <label htmlFor='password'>I am a ...</label>
+          <div className="Select BgPrimary">
+            <select 
+              className="BgPrimary"
+              name='role' 
+              value={this.state.role}
+              onChange={this.handleChange}
+            >
+              <option value=''>--Pleaseselect--</option>
+              <option value='student'>Student</option>
+              <option value='teacher'>Teacher</option>
+            </select>
+          </div>
+          <button id="SubmitBtn" className="NeuBtn CTA">Submit</button>
         </form>
       </div>
     )

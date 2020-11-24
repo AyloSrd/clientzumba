@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { UserContext } from "../Auth/UserContext"
 import { withRouter } from "react-router-dom"
 import apiHandler from "../../api/apiHandler"
+import './Form.css'
 
 class FormSignin extends Component {
   static contextType = UserContext
@@ -43,15 +44,30 @@ class FormSignin extends Component {
   render() {
     return (
       <form 
-      className="Flex Column AlignCenterContent InsetCard"
+        className="Flex Column AlignCenterContent InsetCard Form"
         onChange={ this.handleChange } 
         onSubmit={ this.handleSubmit }
       >
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" />
+        <input 
+          className="Input"
+          type="email"
+          id="email" 
+          name="email" 
+        />
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password" />
-        <button>Submit</button>
+        <input 
+          className="Input"
+          type="password" 
+          id="password" 
+          name="password" 
+        />
+        <button 
+          className="NeuBtn CTA"
+          id="SubmitBtn" 
+        >
+          Submit
+        </button>
       </form>
     )
   }
