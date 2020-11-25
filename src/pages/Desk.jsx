@@ -130,15 +130,15 @@ const Desk = props => {
 		switch (e.target.name) {
 		  case 'htmlTab':
 			setIsHtmlTabOpen(true)
-			changeTab( room, true, false, false )	
+			role === 'teacher' && changeTab( room, true, false, false )	
 			break
 		  case 'cssTab':
 			setIsCssTabOpen(true)
-			changeTab( room, false, true, false )	
+			role === 'teacher' && changeTab( room, false, true, false )	
 			break;
 		  case 'jsTab':
 			setIsJsTabOpen(true)
-			changeTab( room, false, false, true )	
+			role === 'teacher' && changeTab( room, false, false, true )	
 			break;
 		  default:
 			setIsHtmlTabOpen(true)
@@ -146,7 +146,7 @@ const Desk = props => {
 	}
 
 	const handleSendRunMinibrowser = () => {
-		sendRunMinibrowser( room, userName )
+		role === 'teacher' && sendRunMinibrowser( room, userName )
 	} 
 
 	const handleSave = () => {

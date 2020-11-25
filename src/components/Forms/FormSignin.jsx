@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, createRef } from "react"
 import { UserContext } from "../Auth/UserContext"
 import { withRouter } from "react-router-dom"
 import apiHandler from "../../api/apiHandler"
@@ -11,6 +11,8 @@ class FormSignin extends Component {
     email: "",
     password: "",
   }
+
+  alertText = createRef()
 
   handleChange = (event) => {
     const key = event.target.name
@@ -33,42 +35,55 @@ class FormSignin extends Component {
       .signin(this.state)
       .then((data) => {
         this.context.setUser(data);
-        this.props.history.push("/")
+        this.props.history.push("/profile")
       })
       .catch((error) => {
         console.log(error)
-        // Display error message here, if you set the state
+        this.alertText.current.style.display = 'block'
       })
   }
 
   render() {
     return (
-      <form 
-        className="Flex Column AlignCenterContent InsetCard Form"
-        onChange={ this.handleChange } 
-        onSubmit={ this.handleSubmit }
-      >
-        <label htmlFor="email">Email</label>
-        <input 
-          className="Input"
-          type="email"
-          id="email" 
-          name="email" 
-        />
-        <label htmlFor="password">Password</label>
-        <input 
-          className="Input"
-          type="password" 
-          id="password" 
-          name="password" 
-        />
-        <button 
-          className="NeuBtn CTA"
-          id="SubmitBtn" 
+      <div>
+        <div 
+          ref={this.alertText} 
+          style={{display:"none"}}
+          className="Card BgTertiary AlertMsg"
         >
-          Submit
-        </button>
-      </form>
+          <p>
+            Wrong credentials !
+            <br />
+            Please try again
+          </p>
+        </div>
+        <form 
+          className="Flex Column AlignCenterContent InsetCard Form"
+          onChange={ this.handleChange } 
+          onSubmit={ this.handleSubmit }
+        >
+          <label htmlFor="email">Email</label>
+          <input 
+            className="Input"
+            type="email"
+            id="email" 
+            name="email" 
+          />
+          <label htmlFor="password">Password</label>
+          <input 
+            className="Input"
+            type="password" 
+            id="password" 
+            name="password" 
+          />
+          <button 
+            className="NeuBtn CTA"
+            id="SubmitBtn" 
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     )
   }
 }

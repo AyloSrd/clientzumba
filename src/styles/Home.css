@@ -1,19 +1,3 @@
-header {
-	height: calc(100vh - 70px);
-	width: 100vw;
-	max-width: 100%;
-	padding: 0 var(--large-unit)
-}
-
-#TitleHeader {
-	margin-bottom: var(--standard-unit);
-}
-
-#description {
-	font-size: 2rem;
-	width: 60vw;
-}
-
 /*Section 2*/
 
 #valueProposition {

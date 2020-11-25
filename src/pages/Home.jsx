@@ -1,18 +1,12 @@
 import React from "react"
+import Header from '../components/Home/Header'
 import FooterMain from '../components/FooterMain/FooterMain'
 import '../styles/Home.css'
 
 const Home = () => {
     return (
       <div>
-        <header className="Flex Column CenteredVHContent">
-          <div id="TitleHeader">
-            <h1 className="text">Live Interactive<br/>Coding Lessons</h1>
-          </div>
-          <div id="SubtitleHeader">
-            <p className="CenteredText" id="description">Cöde is a modern school platform with a seamless coding experience. The integrated interactive editor and mini-browser, as well as the web-conference system, give a natural dimension to your academic journey</p>
-          </div>
-        </header>
+        <Header />
         <main>
           <section 
             id="section-1"
@@ -25,7 +19,7 @@ const Home = () => {
               <h2 className="text">Section 2</h2>
             </div>
             <div 
-              className="Flex JustifyCenterContent FlexStart"
+              className="Flex JustifyCenterContent AlignFlexStartContent"
               id="valueProposition"  
             >
               <article className="Flex Column">

@@ -1,0 +1,29 @@
+.Header {
+	position: relative;
+	height: calc(100vh - 70px);
+	width: 100vw;
+	max-width: 100%;
+	padding: 0 var(--large-unit);
+	overflow: hidden;
+}
+
+#TitleHeader {
+	margin: var(--large-unit) 0 var(--standard-unit);
+}
+
+#TitleHeader h1 {
+	color: white;
+}
+
+#description {
+	font-size: 2rem;
+	width: 40vw;
+}
+
+.Header img {
+	position: absolute;
+	top: var(--standard-unit);
+	right: 5vw;
+	z-index: -1;
+	height: 80vh;
+}

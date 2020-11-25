@@ -37,7 +37,7 @@ class FormSignup extends Component {
       .then((data) => {
         this.context.setUser(data)
         console.log(data)
-        this.props.history.push('/')
+        this.props.history.push('/profile')
       })
       .catch((error) => {
         console.log(error)
@@ -51,7 +51,7 @@ class FormSignup extends Component {
         <div 
           ref={this.alertText} 
           style={{display:"none"}}
-          className="Card"
+          className="Card BgTertiary AlertMsg"
         >
           <p>
             This email is already taken !

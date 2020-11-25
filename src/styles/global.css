@@ -7,6 +7,8 @@
   --primary-dark:#111618;
   --secondary:#2d749a;
   --secondary-light: #47b6f2;
+  --tertiary: #ea9b80;
+  --tertiary-light: #fab8a2;
   --text-light: #ebebeb;
   --text-dark: #333;
   --standard-unit: 2rem;
@@ -87,6 +89,10 @@ button {
   background-color: var(--primary);
 }
 
+.BgTertiary {
+  background-color: var(--tertiary);
+}
+
 .CenteredText {
   text-align: center;
 }
@@ -112,13 +118,26 @@ button {
   justify-content: center;
 }
 
+.JustifyFlexStartContent {
+  justify-content: flex-start;
+}
+
+.JustifyFlexEndContent {
+  justify-content: flex-end;
+}
+
 .SpaceBetween {
   justify-content: space-between;
 }
 
-.FlexStart {
+.AlignFlexStartContent {
   align-items: flex-start;
 }
+
+.AlignFlexEndContent {
+  align-items: flex-end;
+}
+
 
 .Marginless {
   margin: 0;
