@@ -41,8 +41,8 @@ const LessonsTable = ({ props }) => {
 	console.log(lessons)
 	return (
 		<div 
-			className="Flex Column AlignCenterContent">
-			<h1 className="text">Your lessons</h1>
+			className="TableSection Flex Column AlignCenterContent">
+			<h2 className="CenteredText WhiteText">Your lessons</h2>
 			<div 
 				className="InsetCard TableContainer"
 				id="LessonsTableContainer"

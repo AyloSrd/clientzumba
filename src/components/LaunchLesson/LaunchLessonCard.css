@@ -4,7 +4,6 @@ div.LaunchLessonCard {
 	min-width: calc( var(--large-unit)*3);
 	min-height: calc( var(--large-unit)*3);
 	margin-right: var(--standard-unit);
-	margin-bottom: var(--standard-unit);
 }
 
 .ImgContainer {

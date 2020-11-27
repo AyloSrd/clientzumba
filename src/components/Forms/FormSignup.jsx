@@ -72,6 +72,7 @@ class FormSignup extends Component {
             id='userName' 
             name='userName'
             onChange={this.handleChange}
+            placeholder="Ada"
           />
 
           <label htmlFor='email'>Email</label>
@@ -81,6 +82,7 @@ class FormSignup extends Component {
             id='email' 
             name='email'
             onChange={this.handleChange}
+            placeholder="ada@lovelace.dev"
           />
           
           <label htmlFor='password'>Password</label>
@@ -90,6 +92,7 @@ class FormSignup extends Component {
             id='password' 
             name='password'
             onChange={this.handleChange}
+            placeholder="●●●●●●"
           />
           
           <label htmlFor='password'>I am a ...</label>

@@ -68,6 +68,7 @@ class FormSignin extends Component {
             type="email"
             id="email" 
             name="email" 
+            placeholder="ada@lovelace.dev"
           />
           <label htmlFor="password">Password</label>
           <input 
@@ -75,6 +76,7 @@ class FormSignin extends Component {
             type="password" 
             id="password" 
             name="password" 
+            placeholder="●●●●●●"
           />
           <button 
             className="NeuBtn CTA"

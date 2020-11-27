@@ -3,7 +3,7 @@ import Editor from '../components/Editor/Editor'
 import Video from '../components/Video/Video'
 import Minibrowser from '../components/Minibrowser/Minibrowser'
 import { getCamera } from '../components/Video/VideoLogic'
-import { libraries } from '../data/libraries'
+import { libraries, fakeConsole } from '../data/libraries'
 import { 
 	initiateSocket, 
 	getIsConnected,
@@ -33,7 +33,7 @@ const Desk = props => {
 		_id : userId
 	} = props.context.user
 
-	const { room, code: firstCode }= props.location.state
+	const { room, code: firstCode } = props.location.state
 	const [ library, typeOfSession  ] = room.split('-')
 	
 	const [ html, setHtml ] = useState(firstCode.html)
@@ -89,6 +89,14 @@ const Desk = props => {
 					js:value
 				}, userId)
 				break
+				case 'jsx':
+					setJs(value)
+					role === 'teacher' && sendCode(room, {
+						html,
+						css, 
+						js:value
+					}, userId)
+					break
 			default:
 			  return
 		  }
@@ -109,10 +117,13 @@ const Desk = props => {
 				<style>
 				${ css }
 				</style>
+				${fakeConsole.css}
 			</head>
 			<body>
 				${ html }
+				${fakeConsole.html}
 			</body>
+			${fakeConsole.js}
 			<script ${ library === 'react' ? 'type=text/babel' : ''}>
 				${ js }
 			</script>
@@ -314,7 +325,7 @@ const Desk = props => {
 							open={ isCssTabOpen }
 						/>
 						<Editor 
-							language="javascript"
+							language={ library === 'react' ? 'jsx' : 'javascript' }
 							value={ js }
 							onChange={ handleChange }
 							open={ isJsTabOpen }

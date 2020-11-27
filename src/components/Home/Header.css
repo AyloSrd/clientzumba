@@ -11,10 +11,6 @@
 	margin: var(--large-unit) 0 var(--standard-unit);
 }
 
-#TitleHeader h1 {
-	color: white;
-}
-
 #description {
 	font-size: 2rem;
 	width: 40vw;

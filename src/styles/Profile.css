@@ -1,3 +1,18 @@
+.Welcome {
+	height: calc(60vh + var(--large-unit));
+	position: relative;
+	overflow: hidden;
+	padding-bottom: var(--large-unit);
+}
+
+.Welcome img {
+	position: absolute;
+	top: 0;
+	left: 1vw;
+	z-index: -1;
+	height: calc(100% - var(--large-unit));
+}
+
 #userName{
 	color: var(--secondary-light)
 }

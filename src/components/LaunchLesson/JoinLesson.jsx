@@ -11,16 +11,17 @@ const JoinLessonSection = props => {
 		LaunchSessionFunction(props, { room, code: templateCode[language] }, '/desk')
 	}
 	return (
-		<div className="Flex CenteredVHContent">
+		<div className="JoinLesson Flex CenteredVHContent">
 			<div>
-				<h2 className="text CenteredText subH2">Join a new Lesson</h2>
-				<p className="text CenteredText subH2">Paste the Lesson Room and hit "Join"</p>
+				<h2 className="CenteredText WhiteText">Join a new Lesson</h2>
 				<form 
 					className="Flex Column FormContainer CenteredVHContent"
 					onSubmit={handleOnSubmit}
 				>
+					<label htmlFor="join-lesson">Paste the Lesson Room and hit "Join"</label>
 					<input 
 						className="Input"
+						id="join-lesson"
 						type="text"
 						value={ room }
 						onChange={e => setRoom(e.target.value)}
@@ -28,9 +29,9 @@ const JoinLessonSection = props => {
 					/>
 					<div id="JoinBtn">
 						<input 
-							className="NeuBtn"
+							className="NeuBtn CTA"
 							type="submit"
-							value="Join lesson"
+							value="Join"
 						/>
 					</div>
 				</form>

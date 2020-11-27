@@ -72,6 +72,11 @@ h3 {
   font-size: 2rem;
 }
 
+h3.subH2 {
+  font-size: 1.2rem;
+  font-weight: 300;
+} 
+
 a {
   text-decoration: none;
   color: inherit;
@@ -95,6 +100,14 @@ button {
 
 .CenteredText {
   text-align: center;
+}
+
+.WhiteText {
+  color: white;
+}
+
+.DarkText {
+  color: var(--text-dark);
 }
 
 .Flex {
@@ -258,14 +271,14 @@ div.TableContainer tr:last-child, div.TableContainer td:last-child {
   border: none;
 }
 
-button.CTA, div.CTA {
+button.CTA, div.CTA, input.CTA {
 	font-weight: 700;
 	background-color: var(--secondary);
 	background: linear-gradient(145deg, #307ca5, #29688b);
 	transition: 0.2s ease-in;
 }
 
-button.CTA:hover, div.CTA:hover {
+button.CTA:hover, div.CTA:hover, input.CTA {
 	color: white;
 	background: linear-gradient(145deg, #29688b, #307ca5);
 	transition: 0.2s ease-in;

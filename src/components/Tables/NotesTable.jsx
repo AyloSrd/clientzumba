@@ -40,8 +40,8 @@ const NotesTable = ({ props }) => {
 	console.log(notes)
 	return (
 		<div 
-			className="Flex Column AlignCenterContent">
-			<h1 className="text">Your notes</h1>
+			className="TableSection Flex Column AlignCenterContent">
+			<h2 className="CenteredText WhiteText">Your notes</h2>
 			<div 
 				className="InsetCard TableContainer"
 				id="NotesTableContainer"

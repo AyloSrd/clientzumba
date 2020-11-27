@@ -1,3 +1,11 @@
+.TableSection {
+	padding-bottom: var(--large-unit);
+}
+
+.TableSection h2 {
+	padding-bottom: var(--standard-unit);
+}
+
 /*table*/
 div#NotesTableContainer {
 	max-width: max-content;

@@ -1,3 +1,28 @@
+.JoinLesson {
+	padding-bottom: var(--large-unit);
+}
+
+.JoinLesson form {
+	margin: var(--standard-unit) 0;
+}
+
+.JoinLesson form label {
+	margin-bottom: var(--little-unit);
+	font-size: 1.2rem;
+}
+
+.JoinLesson form input[type=text] {
+	font-size: 1.2rem;
+	width: 300px;
+	height: 40px;
+}
+
+.JoinLesson form input[type=submit] {
+	font-size: 1.5rem;
+	width: 100px !important;
+	height: 50px !important;
+}
+
 #JoinBtn {
 	margin-top: var(--standard-unit);
 }
