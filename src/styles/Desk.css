@@ -193,6 +193,7 @@ div.Play {
 	padding: var(--little-unit);
 	display: flex;
 	align-items: flex-end;
+	pointer-events: none;
 }
   
 .Video {
@@ -202,16 +203,19 @@ div.Play {
 	background-color: var(--secondary);
 	overflow: hidden;
 	margin-left: var(--little-unit);
+	pointer-events: none;
 }
 
 video {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	pointer-events: none;
 }
 
 .BigVideo {
 	height: 150px;
 	width: 150px;
 	float: right;
+	pointer-events: none;
 }

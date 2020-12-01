@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
+import Chat from '../Chat/Chat'
 import './Minibrowser.css'
 
 const Minibrowser = props => {
@@ -6,12 +7,25 @@ const Minibrowser = props => {
 		srcDoc, 
 		lessonName, 
 		handleRunMinibrowser, 
-		sendRunMinibrowser 
+		sendRunMinibrowser,
+		chat, 
+		setChat, 
+		room, 
+		sendMsg, 
+		userId, 
+		userName, 
+		role 
 	} = props
-	
-	const handleClick = () => {
+
+	const [ isChatOpen, setIsChatOpen ] = useState(false)
+
+	const handleRun = () => {
 		handleRunMinibrowser()
 		sendRunMinibrowser()
+	}
+
+	const handleChat = () => {
+		console.log('chat handled')
 	}
 	
 	return (
@@ -20,9 +34,10 @@ const Minibrowser = props => {
 				className="Flex SpaceBetween AlignCenterContent"
 				id="BrowserHeader"
 			>	
+			<div>
 				<button 
 					className='NeuBtn IconBtn'
-					onClick={ handleClick }
+					onClick={ handleRun }
 					id="RunBtn"
 				>
 					<div className='iconContainer'>
@@ -31,6 +46,14 @@ const Minibrowser = props => {
 						</div>
 					</div>
 				</button>
+				<button 
+					className='NeuBtn IconBtn CTA'
+					onClick={ () => setIsChatOpen(prevState => !prevState) }
+					id="ChatBtn"
+				>
+					c
+				</button>
+			</div>
 				<div 
 					className="Flex AlignCenterContent"
 					id="LessonName"
@@ -44,15 +67,28 @@ const Minibrowser = props => {
 				</div>
 			</div>
 			<div 
-				className="Card"
+				className={!isChatOpen && 'Card'}
 				id="IframeContainer"
-			>			
-				<iframe 
-					srcDoc={ srcDoc }
-					title="output"
-					sandbox="allow-scripts"
-					frameBorder="0"
-				/>
+			>		
+				{
+					isChatOpen && <Chat 
+						chat = {chat}
+						setChat = {setChat}
+						room = {room}
+						sendMsg = {sendMsg}
+						userId = {userId}
+						userName = {userName}
+						role = {role}
+					/>
+				}
+				{
+					!isChatOpen && <iframe
+						srcDoc={ srcDoc }
+						title="output"
+						sandbox="allow-scripts"
+						frameBorder="0"
+					/>
+				}
 			</div>
 		</div>
 	)

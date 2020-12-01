@@ -35,6 +35,17 @@ export const getCode = updateCode => {
 	})
 }
 
+export const sendMsg = (room, msg) => {
+	if (socket) socket.emit('chat', room, msg )
+}
+
+export const getMsg = setChat => {
+	if (!socket) return(true)
+  	socket.on('chat', msg => {
+		setChat(prevChat => [...prevChat, msg])
+	})
+}
+
 export const getRunMinibrowser = ( setMinibrowserCounter, miniBrowserCounter ) => {
 	if(socket){
 		socket.on('runMinibrowser', userName => {

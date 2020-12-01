@@ -63,6 +63,7 @@ iframe {
 	background-color: white;
 	border-radius: var(--little-unit);
 	box-shadow: rgba(10, 37, 64, 0.35) 0px 0px 11px 0px inset;
+	transition: 0.1s ease-in;
 }
 
 #LessonName {

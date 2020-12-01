@@ -17,7 +17,9 @@ import {
 	sendCallMeRequest,
 	callPeer,
 	removeClosedCall,
-	getTeachersPeerId 
+	getTeachersPeerId, 
+	getMsg,
+	sendMsg
 } from '../socket/socket'
 import Peer from 'peerjs'
 import { withUser } from '../components/Auth/withUser'
@@ -51,6 +53,9 @@ const Desk = props => {
 
 	const [ srcDoc, setSrcDoc ] = useState('')
 	const [ miniBrowserCounter, setMinibrowserCounter ] = useState(0)
+	//chat
+	const [ chat, setChat] = useState([])
+
 	// video
 	const userVideo = useRef()
 	const [ stream, setStream ] = useState()
@@ -176,7 +181,7 @@ const Desk = props => {
 			.catch(err => console.error(err))
 	}
 
-	//when component mounts initialize socket and start listening to code changing, browser run, and tab change 
+	//when component mounts initialize socket and start listening to code changing, chat messages, browser run, and tab change 
 	useEffect(() => {
 		initiateSocket(room, userId, role)
 		getCode(code => {
@@ -188,6 +193,8 @@ const Desk = props => {
 		getTeachersPeerId(setTeacher)
 		getRunMinibrowser(setMinibrowserCounter, miniBrowserCounter)
 		getActiveTab(setIsHtmlTabOpen, setIsCssTabOpen, setIsJsTabOpen)
+
+		getMsg(setChat)
 
 		getCamera(userVideo, setStream, role)
 		
@@ -338,6 +345,13 @@ const Desk = props => {
 						lessonName={ room }
 						handleRunMinibrowser={ handleRunMinibrowser }
 						sendRunMinibrowser={ handleSendRunMinibrowser }
+						chat = {chat}
+						setChat = {setChat}
+						room = {room}
+						sendMsg = {sendMsg}
+						userId = {userId}
+						userName = {userName}
+						role = {role}
 					/>
 				</div>
 				<div id="VideoContainer">
