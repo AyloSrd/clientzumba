@@ -10,8 +10,13 @@
 	height: 40px;
 }
 
-#RunBtn {
+/*-----BUTTONS------*/
+#MiniBrowserBtns button {
 	position: relative;
+}
+
+#MiniBrowserBtns button:not(:last-child) {
+	margin-right: var(--little-unit);
 }
  
 div.Run {
@@ -42,17 +47,48 @@ div.Run {
 	transition: 0.5s ease-out;
   }
 
-  #RunBtn:hover div.Run {
+#RunBtn:hover div.Run {
 	-webkit-transform: rotate(360deg);
 			transform: rotate(360deg);
+}
+
+div.Chat {
+	color: white;
+	position: absolute;
+	margin-left: 9px;
+	margin-top: -8px;
+	width: 22px;
+	height: 15px;
+	border: solid 2px white;
+	border-radius: 2px;
+  }
+  
+  div.Chat:before {
+	content: '';
+	position: absolute;
+	left: 8px;
+	top: 9px;
+	width: 7px;
+	height: 7px;
+	-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
+	background-color: var(--primary);
+	border-bottom: solid 2px white;
+	border-right: solid 2px white;
   }
 
-  #IframeContainer {
+  button.CTA div.Chat:before {
+	  background-color: var(--secondary);
+  }
+
+/*------IFRAME-------*/
+
+#IframeContainer {
 	/* padding: 0 0 var(--standard-unit) 0; */
 	height: 100%;
 	max-height: 100%;
 	max-width: 100%;
-  }
+}
   
 iframe {
 	overflow: visible;

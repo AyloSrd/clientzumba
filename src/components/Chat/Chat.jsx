@@ -34,7 +34,7 @@ const Chat = ( { chat, setChat, room, sendMsg, userId, userName, role } ) => {
 			id="Chat"
 		>
 			<div className="messages InsetCard">
-				<div className="innerMessages">
+				<div className="Flex Column innerMessages">
 					{
 						chat.length !== 0 && chat.map( msg => <Message 
 								msg={msg}
@@ -49,7 +49,6 @@ const Chat = ( { chat, setChat, room, sendMsg, userId, userName, role } ) => {
 				className="Flex AlignFlexEndContent" 
 			>
 				<form 
-					onChange={ handleChange }
 					onSubmit={ handleSubmit }
 					className="Flex SpaceBetween "
 				>
@@ -59,12 +58,14 @@ const Chat = ( { chat, setChat, room, sendMsg, userId, userName, role } ) => {
 						id="textInput"
 						value ={ text }
 						required 
+						onChange={ handleChange }
 					/>
 					<div className="Flex CenteredVHContent">
 						<input 
 							type="checkbox" 
 							name="type" 
 							checked={textType === 'codeText'}
+							onChange={ handleChange }
 						/>
 						<label
 							htmlFor="type"
@@ -74,7 +75,7 @@ const Chat = ( { chat, setChat, room, sendMsg, userId, userName, role } ) => {
 						type="submit" 
 						value="send"
 						className={ `NeuBtn ${text.length > 0 ? 'CTA' : ''}` }
-						style = { role === 'student' && { marginRight:'var(--large-unit)' }}
+						style = { role === 'student' ? { marginRight:'var(--large-unit)' } : { marginRight:'var(--little-unit)' } }
 					/>
 				</form>
 			</div>

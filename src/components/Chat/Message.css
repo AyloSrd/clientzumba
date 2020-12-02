@@ -1,0 +1,33 @@
+article.Message {
+	width: calc(var(--large-unit)*3);
+	padding: var(--little-unit);
+	margin-bottom: var(--standard-unit);
+	background: linear-gradient(145deg, #2a363c, #232d32);
+	box-shadow:  6px 6px 12px #212b30, 
+             -6px -6px 12px #2d3a40;
+}
+
+article.Message.received {
+	align-self: flex-start;
+	border-radius: 0 var(--little-unit) var(--little-unit);
+}
+
+article.Message.sent {
+	align-self: flex-end;
+	background: linear-gradient(145deg, #307ca5, #29688b);
+	border-radius: var(--little-unit) 0 var(--little-unit) var(--little-unit);
+}
+
+article.Message h3 {
+	font-size: 1.2rem;
+}
+
+article.Message p {
+	font-size: 1rem;
+	word-wrap: break-word;
+}
+
+article.Message p.codeText {
+	font-family: monospace;
+	background-color: black;
+}

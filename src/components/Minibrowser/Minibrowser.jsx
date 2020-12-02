@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Chat from '../Chat/Chat'
 import './Minibrowser.css'
+import '../Tables/NotesTable.css'
 
 const Minibrowser = props => {
 	const { 
@@ -18,6 +19,7 @@ const Minibrowser = props => {
 	} = props
 
 	const [ isChatOpen, setIsChatOpen ] = useState(false)
+	const [ unreadMessage, setUnreadMessage ] = useState(false)
 
 	const handleRun = () => {
 		handleRunMinibrowser()
@@ -25,16 +27,25 @@ const Minibrowser = props => {
 	}
 
 	const handleChat = () => {
-		console.log('chat handled')
+		setIsChatOpen(prevState => !prevState)
 	}
+
+	useEffect(() => {
+		if(isChatOpen) setUnreadMessage(false)
+		if(!isChatOpen && chat.length >= 1) setUnreadMessage(true)
+	}, [ chat ])
 	
+	useEffect(() => {
+		if(isChatOpen) setUnreadMessage(false)
+	}, [ isChatOpen ])
+
 	return (
 		<div className="Minibrowser Flex Column SpaceBetween">
 			<div 
 				className="Flex SpaceBetween AlignCenterContent"
 				id="BrowserHeader"
 			>	
-			<div>
+			<div id="MiniBrowserBtns" className="Flex">
 				<button 
 					className='NeuBtn IconBtn'
 					onClick={ handleRun }
@@ -47,11 +58,11 @@ const Minibrowser = props => {
 					</div>
 				</button>
 				<button 
-					className='NeuBtn IconBtn CTA'
-					onClick={ () => setIsChatOpen(prevState => !prevState) }
+					className={`NeuBtn IconBtn ${unreadMessage && 'CTA'}`}
+					onClick={ handleChat }
 					id="ChatBtn"
 				>
-					c
+					<div className={ isChatOpen ? 'Code' : 'Chat' }></div>
 				</button>
 			</div>
 				<div 
