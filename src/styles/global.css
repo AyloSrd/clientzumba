@@ -118,6 +118,10 @@ button {
   flex-direction: column;
 }
 
+.ColumnReverse {
+  flex-direction: column-reverse;
+}
+
 .CenteredVHContent {
   align-items: center;
   justify-content: center;

@@ -11,8 +11,14 @@ const Video = ({ call, stream, teacher }) => {
 	}, [])
 
 	return(
-		<div className={`Video ${call.peer === teacher && 'BigVideo'}`}>
-          <video playsInline ref={classmateVideo} autoPlay/>
+		<div className={`Video ${call.peer === teacher ? 'BigVideo' : ''}`}>
+		  	<video 
+				playsInline 
+				controls 
+				muted = {call.peer === teacher ? false : true}
+				ref={classmateVideo} 
+				autoPlay
+			/>
         </div>
 	)
 }

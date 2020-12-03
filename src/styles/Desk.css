@@ -214,8 +214,8 @@ video {
 }
 
 .BigVideo {
-	height: 150px;
-	width: 150px;
-	float: right;
+	height: 120px;
+	width: 120px;
+	justify-self: flex-end;
 	pointer-events: none;
 }

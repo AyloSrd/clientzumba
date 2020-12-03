@@ -20,6 +20,16 @@ const LaunchLessonCard = ({ props, language, uuidv4 }) => {
 			>
 				Launch lesson
 			</button>
+			<button
+				className="NeuBtn LaunchLessonBtn"
+				onClick={() => LaunchSessionFunction(props, { 
+						room:`${language}-stream-${uuidv4()}`, 
+						code: templateCode[language] 
+					}, '/desk')
+				}
+			>
+				Stream
+			</button>
 		</div>
 	)
 }

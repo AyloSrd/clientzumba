@@ -241,8 +241,7 @@ const Desk = props => {
 	//start peer connection
 	useEffect(() => {
 		if (peerId && stream) {
-			callPeer(stream, myPeer, setCalls)
-			console.log('sending call request')
+			if(typeOfSession === 'lesson' || role === 'teacher') callPeer(stream, myPeer, setCalls)
 			sendCallMeRequest(peerId, room) 
 			myPeer.on('call', call => setCalls(prevCalls => [ ...prevCalls, call ]))
 		}
@@ -355,12 +354,16 @@ const Desk = props => {
 					/>
 				</div>
 				<div id="VideoContainer">
-					<div className="Video">
-						<video playsInline controls muted ref={userVideo} autoPlay/>
-						<h2>{peerId}</h2>
-					</div>
 					{
-						calls.map((call, index) => <Video key={index} call={call} stream={stream} teacher={teacher} />)
+						(typeOfSession !== 'session' || role === 'teacher') && (
+							<div className={`Video ${role === 'teacher' ? 'BigVideo' : ''}`}>
+								<video playsInline controls muted ref={userVideo} autoPlay/>
+								<h2>{peerId}</h2>
+							</div>
+						)
+					}
+					{
+						calls.map(call => <Video key={call.peer} call={call} stream={stream} teacher={teacher} />)
 					}
 				</div>
 			</div>
