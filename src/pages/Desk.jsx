@@ -205,7 +205,6 @@ const Desk = props => {
     	})
 		setMyPeer(myPeer)
 		myPeer.on('open', id => {
-			console.log('peer id', id)
 			setPeerId(id)	
 		})
 		myPeer.on('error', id => {
@@ -223,7 +222,6 @@ const Desk = props => {
 		  setHtml(incomingHtml)
 		  setCss(incomingCss)
 		  setJs(incomingJs)
-		  console.log( 'in useEffect', incomingHtml, incomingCss, incomingJs )
 		}
 	  }, [ incomingHtml, incomingCss, incomingJs ])
 	
@@ -246,8 +244,6 @@ const Desk = props => {
 			myPeer.on('call', call => setCalls(prevCalls => [ ...prevCalls, call ]))
 		}
 	}, [ peerId, stream ])
-
-	console.log('peers') 
 
 	return (
 		<>

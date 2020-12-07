@@ -6,6 +6,15 @@ div.LaunchLessonCard {
 	margin-right: var(--standard-unit);
 }
 
+div.LaunchLessonCard button:not(:last-child) {
+	margin-right: var(--standard-unit);
+}
+
+div.LaunchLessonCard button {
+	height: auto;
+	padding: var(--standard-unit);
+}
+
 .ImgContainer {
 	height: calc( var(--large-unit)*2);
 	width: calc( var(--large-unit)*2);

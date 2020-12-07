@@ -1,0 +1,35 @@
+.IDESection {
+	height: auto;
+	width: auto;
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+.IDESection .MainPanelHeader {
+	height: 40px;
+	margin-bottom: var(--standard-unit);
+}
+
+.IDESection iframe {
+	overflow: visible;
+	height: 100%;
+	width: 100%;
+	max-height: 100%;
+	max-width: 100%;
+	background-color: white;
+	border-radius: var(--little-unit);
+	box-shadow: rgba(10, 37, 64, 0.35) 0px 0px 11px 0px inset;
+	transition: 0.1s ease-in;
+}
+
+.IDESection #HomePageMiniBrowser {
+	height: 400px;
+	width: 200px;
+}
+
+.IDESection .EditorsWrapper {
+	height: 400px;
+	width: 500px;
+	max-width: 100%;
+	padding: var(--little-unit);
+}

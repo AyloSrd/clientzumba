@@ -1,5 +1,6 @@
 .ValueProposition {
-	height: 100vh;
+	height: auto;
+	margin-bottom: var(--large-unit);
 }
 
 #valuePropositionContainer {

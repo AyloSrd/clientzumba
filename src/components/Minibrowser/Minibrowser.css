@@ -47,7 +47,7 @@ div.Run {
 	transition: 0.5s ease-out;
   }
 
-#RunBtn:hover div.Run {
+.RunBtn:hover div.Run {
 	-webkit-transform: rotate(360deg);
 			transform: rotate(360deg);
 }
@@ -90,7 +90,7 @@ div.Chat {
 	max-width: 100%;
 }
   
-iframe {
+#IframeContainer iframe {
 	overflow: visible;
 	height: 100%;
 	width: 100%;

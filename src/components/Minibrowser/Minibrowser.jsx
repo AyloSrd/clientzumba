@@ -47,9 +47,8 @@ const Minibrowser = props => {
 			>	
 			<div id="MiniBrowserBtns" className="Flex">
 				<button 
-					className='NeuBtn IconBtn'
+					className='NeuBtn IconBtn .RunBtn'
 					onClick={ handleRun }
-					id="RunBtn"
 				>
 					<div className='iconContainer'>
 						<div 

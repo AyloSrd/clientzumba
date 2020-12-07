@@ -1,0 +1,32 @@
+section.SectionTemplate {
+	padding: 0 var(--large-unit) var(--large-unit);
+	display: grid;
+	gap: var(--large-unit);
+}
+
+section.SectionTemplate h3 {
+	margin-top: 70px;
+	color: white;
+}
+
+section.SectionTemplate p {
+	font-size: 1.3rem;
+}
+
+section.SectionTemplate.Regular {
+	grid-template-columns: 1fr 2fr;
+}
+
+section.SectionTemplate.Regular h3, section.SectionTemplate.Regular p {
+	text-align: right;
+}
+
+section.SectionTemplate.Reversed {
+	grid-template-columns: 2fr 1fr;
+}
+
+section.SectionTemplate.Reversed h3, section.SectionTemplate.Reversed p {
+	text-align: left;
+}
+
+

@@ -28,6 +28,7 @@ export const templateCode = {
 	text-align: center;
 }`,
 		js: `const App = props => <h1>Yo,{props.welcome}</h1>
+		
 ReactDOM.render(<App welcome=" welcome to your React lesson!" />, document.getElementById('root'))
 `},
 	vue: {
