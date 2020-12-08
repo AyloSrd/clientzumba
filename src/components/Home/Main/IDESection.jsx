@@ -61,6 +61,7 @@ const IDESection = () => {
 	}
 
 	useEffect(() => {
+		console.log(js)
 		handleRunMinibrowser()
 	}, [])
 

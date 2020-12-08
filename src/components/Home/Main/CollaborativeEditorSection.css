@@ -1,0 +1,29 @@
+div.CollaborativeEditorSection {
+	height: 400px;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+}
+
+div.CollaborativeEditorSection div.EditorsInnerHeader {
+	height: 40px;
+	padding: 0 var(--standard-unit)
+}
+
+div.CollaborativeEditorSection div.EditorsWrapper {
+	height: 300px;
+	width: 100%;
+	max-width: 100%;
+	padding: var(--little-unit);
+}
+
+div.CollaborativeEditorSection div.InnerPannel {
+	padding-top: var(--standard-unit);
+}
+
+div.CollaborativeEditorSection #EditorsSeparator {
+	width: 3px;
+	height: 80%;
+	align-self: center;
+	box-shadow: inset 1px 1px 2px #111618, 
+				inset -1px -1px 2px #3d4f58;
+}

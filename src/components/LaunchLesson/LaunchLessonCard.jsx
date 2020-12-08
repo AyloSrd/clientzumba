@@ -9,7 +9,7 @@ const LaunchLessonCard = ({ props, language, uuidv4 }) => {
 			<div className="ImgContainer LaunchSessionImg">
 				<img src={`assets/${language}Logo.jpg`} alt={`${language} logo`}/>
 			</div>
-			<div className="Flex">
+			<div className="Flex LaunchBtns">
 				<button
 					className="NeuBtn LaunchLessonBtn"
 					onClick={() => LaunchSessionFunction(props, { 
