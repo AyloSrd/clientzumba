@@ -47,6 +47,10 @@ const Desk = props => {
 	const [ incomingCss, setIncomingCss ] = useState(firstCode.css)
 	const [ incomingJs, setIncomingJs ] = useState(firstCode.js)
 
+	const [ isIncomingHtmlTabOpen, setIsIncomingHtmlTabOpen ] = useState(true)
+	const [ isIncomingCssTabOpen, setIsIncomingCssTabOpen ] = useState(false)
+	const [ isIncomingJsTabOpen, setIsIncomingJsTabOpen ] = useState(false)
+	
 	const [ isHtmlTabOpen, setIsHtmlTabOpen ] = useState(true)
 	const [ isCssTabOpen, setIsCssTabOpen ] = useState(false)
 	const [ isJsTabOpen, setIsJsTabOpen ] = useState(false)
@@ -192,7 +196,7 @@ const Desk = props => {
 		getIsConnected(setSocketConnected)
 		getTeachersPeerId(setTeacher)
 		getRunMinibrowser(setMinibrowserCounter, miniBrowserCounter)
-		getActiveTab(setIsHtmlTabOpen, setIsCssTabOpen, setIsJsTabOpen)
+		getActiveTab(setIsIncomingHtmlTabOpen, setIsIncomingCssTabOpen, setIsIncomingJsTabOpen)
 
 		getMsg(setChat)
 
@@ -224,12 +228,23 @@ const Desk = props => {
 		  setJs(incomingJs)
 		}
 	  }, [ incomingHtml, incomingCss, incomingJs ])
+
+	useEffect(() => {
+		if (!isPaused) {
+			setIsHtmlTabOpen(isIncomingHtmlTabOpen)
+			setIsCssTabOpen(isIncomingCssTabOpen)
+			setIsJsTabOpen(isIncomingJsTabOpen)
+		}
+	}, [ isIncomingHtmlTabOpen, isIncomingCssTabOpen, isIncomingJsTabOpen ])
 	
 	  useEffect(() => {
 		if (!isPaused) {
 		  setHtml(incomingHtml)
 		  setCss(incomingCss)
 		  setJs(incomingJs)
+		  setIsHtmlTabOpen(isIncomingHtmlTabOpen)
+		  setIsCssTabOpen(isIncomingCssTabOpen)
+		  setIsJsTabOpen(isIncomingJsTabOpen)
 		}
 	  }, [ isPaused ])
 

@@ -63,12 +63,12 @@ export const changeTab = (room, html, css, js) => {
 	if (socket) socket.emit('changeTab', room, html, css, js)
 }
 
-export const getActiveTab = (isHtmlTabOpen, isCssTabOpen, isJsTabOpen) => {
+export const getActiveTab = (isIncomingHtmlTabOpen, isIncomingCssTabOpen, isIncomingJsTabOpen) => {
 	if (socket) {
 		socket.on('changeTab', (html, css, js) => {
-			isHtmlTabOpen(html)
-			isCssTabOpen(css)
-			isJsTabOpen(js)
+			isIncomingHtmlTabOpen(html)
+			isIncomingCssTabOpen(css)
+			isIncomingJsTabOpen(js)
 		})
 	}
 }
