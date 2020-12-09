@@ -38,6 +38,12 @@ const Desk = props => {
 	const { room, code: firstCode } = props.location.state
 	const [ library, typeOfSession  ] = room.split('-')
 	
+	const shouldShowUserVideo = role === 'teacher' ? true : typeOfSession === 'lesson' ? true : false
+	const shouldStreamIncomingCall = role === 'student' ? true : typeOfSession === 'lesson' ? true : false
+
+	console.log('shouldShow', shouldShowUserVideo)
+	console.log('shouldStream', shouldStreamIncomingCall)
+
 	const [ html, setHtml ] = useState(firstCode.html)
 	const [ css, setCss ] = useState(firstCode.css)
 	const [ js, setJs ] = useState(firstCode.js)
@@ -256,7 +262,9 @@ const Desk = props => {
 		if (peerId && stream) {
 			if(typeOfSession === 'lesson' || role === 'teacher') callPeer(stream, myPeer, setCalls)
 			sendCallMeRequest(peerId, room) 
-			myPeer.on('call', call => setCalls(prevCalls => [ ...prevCalls, call ]))
+			myPeer.on('call', call => {
+				console.log('getting called')
+				setCalls(prevCalls => [ ...prevCalls, call ])})
 		}
 	}, [ peerId, stream ])
 
@@ -366,15 +374,15 @@ const Desk = props => {
 				</div>
 				<div id="VideoContainer">
 					{
-						(typeOfSession !== 'session' || role === 'teacher') && (
-							<div className={`Video ${role === 'teacher' ? 'BigVideo' : ''}`}>
+						<div 
+							style={{visibility: shouldShowUserVideo ? 'visible' : 'hidden' }}
+							className={`Video ${role === 'teacher' ? 'BigVideo' : ''}`}>
 								<video playsInline controls muted ref={userVideo} autoPlay/>
 								<h2>{peerId}</h2>
 							</div>
-						)
 					}
 					{
-						calls.map(call => <Video key={call.peer} call={call} stream={stream} teacher={teacher} />)
+						calls.map(call => <Video key={call.peer} call={call} stream={stream} teacher={teacher} shouldStreamIncomingCall={shouldStreamIncomingCall} />)
 					}
 				</div>
 			</div>

@@ -1,17 +1,19 @@
 import React, { useEffect, useRef } from 'react'
 import { streamCall } from './VideoLogic'
 
-const Video = ({ call, stream, teacher }) => {
+const Video = ({ call, stream, teacher, shouldStreamIncomingCall }) => {
 	const classmateVideo = useRef()
 
 	useEffect(() => {
 		call.answer(stream)
-		streamCall( call, classmateVideo)
+		if (shouldStreamIncomingCall) streamCall( call, classmateVideo)
 		return () => call.close()
 	}, [])
 
 	return(
-		<div className={`Video ${call.peer === teacher ? 'BigVideo' : ''}`}>
+		<div 
+			style={{visibility: shouldStreamIncomingCall ? 'visible' : 'hidden' }}
+			className={`Video ${call.peer === teacher ? 'BigVideo' : ''}`}>
 		  	<video 
 				playsInline 
 				controls 
