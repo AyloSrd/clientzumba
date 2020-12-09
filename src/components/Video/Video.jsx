@@ -6,14 +6,12 @@ const Video = ({ call, stream, teacher, shouldStreamIncomingCall }) => {
 
 	useEffect(() => {
 		call.answer(stream)
-		if (shouldStreamIncomingCall) streamCall( call, classmateVideo)
+		streamCall( call, classmateVideo)
 		return () => call.close()
 	}, [])
 
 	return(
-		<div 
-			style={{visibility: shouldStreamIncomingCall ? 'visible' : 'hidden' }}
-			className={`Video ${call.peer === teacher ? 'BigVideo' : ''}`}>
+		<div className={`Video ${call.peer === teacher ? 'BigVideo' : ''}`}>
 		  	<video 
 				playsInline 
 				controls 

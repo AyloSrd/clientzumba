@@ -382,7 +382,7 @@ const Desk = props => {
 							</div>
 					}
 					{
-						calls.map(call => <Video key={call.peer} call={call} stream={stream} teacher={teacher} shouldStreamIncomingCall={shouldStreamIncomingCall} />)
+						shouldStreamIncomingCall && calls.map(call => <Video key={call.peer} call={call} stream={stream} teacher={teacher} shouldStreamIncomingCall={shouldStreamIncomingCall} />)
 					}
 				</div>
 			</div>
