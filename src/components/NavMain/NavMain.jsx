@@ -49,7 +49,7 @@ const NavMain = props => {
             <li className="Flex CenteredVHContent">
               <NavLink to="/signup">
                 <div className="NeuBtn CTA Flex CenteredVHContent">
-                  <p>Sign up</p>
+                  <p>Get on board!</p>
                 </div>
               </NavLink>
             </li>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import './Header.css'
 
 const Header = () => {
@@ -12,6 +13,11 @@ const Header = () => {
 				<div id="SubtitleHeader">
 					<p id="description">Cöde is a modern school platform with a seamless coding experience. The integrated interactive editor and mini-browser, as well as the web-conference system, give a natural dimension to your academic journey</p>
 				</div>
+				<NavLink to="/signup">
+					<button className="NeuBtn CTA">
+						Create your first lesson for free!
+					</button>
+				</NavLink>
 			</header>
 		</div>
 	)
