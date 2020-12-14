@@ -1,11 +1,10 @@
 .Header {
 	position: relative;
-	height: 100vh/*calc(100vh - 70px)*/;
+	height: calc(100vh - 70px);
 	width: 100vw;
 	max-width: 100%;
 	padding: 0 var(--large-unit);
 	margin-bottom: var(--large-unit);
-	overflow: hidden;
 }
 
 #TitleHeader {
@@ -15,7 +14,7 @@
 #description {
 	font-size: 2rem;
 	width: 40vw;
-	margin: 0 0 var(--standard-unit);
+	margin: 0 0 calc(var(--standard-unit)*2);
 }
 
 .Header img {
@@ -23,7 +22,7 @@
 	top: var(--standard-unit);
 	right: 5vw;
 	z-index: -1;
-	width: 60vw;
+	height:90vh;
 }
 
 .Header button.NeuBtn {

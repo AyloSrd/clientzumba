@@ -6,12 +6,12 @@ const Header = () => {
 	return (
 		<div>
 			<header className="Flex Column Header">
-				<img src="assets/header.png" alt="https://unsplash.com/photos/KWrNwBE87EY?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink"/>
+				<img src="assets/base.png" alt="https://unsplash.com/photos/KWrNwBE87EY?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink"/>
 				<div id="TitleHeader">
 					<h1 className="WhiteText">Live Interactive<br/>Coding Lessons</h1>
 				</div>
 				<div id="SubtitleHeader">
-					<p id="description">Cöde is a modern school platform with a seamless coding experience. The integrated interactive editor and mini-browser, as well as the web-conference system, give a natural dimension to your academic journey</p>
+					<p id="description">Cöde is a modern school platform for a seamless learning journey. Stream your code and let your students play with it.</p>
 				</div>
 				<NavLink to="/signup">
 					<button className="NeuBtn CTA">
