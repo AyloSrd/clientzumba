@@ -1,28 +1,40 @@
 .Header {
 	position: relative;
-	height: calc(100vh - 70px);
 	width: 100vw;
 	max-width: 100%;
 	padding: 0 var(--large-unit);
 	margin-bottom: var(--large-unit);
 }
 
+.Header .ContentWrapper {
+	max-width: 1200px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+	gap: var(--standard-unit);
+}
+
 #TitleHeader {
 	margin: var(--large-unit) 0 var(--standard-unit);
 }
 
-#description {
-	font-size: 2rem;
-	width: 40vw;
-	margin: 0 0 calc(var(--standard-unit)*2);
+#TitleHeader h1 {
+	line-height: 90%;
 }
 
-.Header img {
-	position: absolute;
-	top: var(--standard-unit);
-	right: 5vw;
-	z-index: -1;
-	height:90vh;
+#description {
+	font-size: 2rem;
+	margin-bottom: var(--large-unit);
+}
+
+.Header .imgContainer {
+	width: 100%;
+	height: 100%;
+}
+
+.Header .imgContainer img {
+	width: 100%;
+	max-width: 550px;
+	height: auto;
 }
 
 .Header button.NeuBtn {
